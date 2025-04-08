@@ -1,164 +1,218 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr" class="eC9N2e">
+<html lang="en">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <base href=".">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign in - Google Accounts</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="icon" type="image/png" href="icon.png">
+    <title>DEMO - Phishing Awareness - Google Sign In</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Apply Inter font globally */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Basic styling for the floating label effect */
+        .form-group label {
+            position: absolute;
+            top: 50%;
+            left: 16px; /* Adjust based on input padding */
+            transform: translateY(-50%);
+            transition: all 0.2s ease-out;
+            pointer-events: none;
+            color: #5f6368; /* Google's placeholder color */
+            font-size: 1rem; /* 16px */
+            background-color: white; /* Match card background */
+            padding: 0 4px; /* Add padding to prevent overlap with border */
+        }
+
+        /* When input is focused or has value (using Tailwind peer) */
+        .form-input:focus + label,
+        .form-input:not(:placeholder-shown) + label {
+            top: 0;
+            left: 12px; /* Adjust position */
+            font-size: 0.75rem; /* 12px */
+            color: #1a73e8; /* Google's blue focus color */
+            transform: translateY(-50%);
+        }
+
+        /* Style for the custom message box */
+        #message-box {
+            position: fixed;
+            top: 80px; /* Below the warning banner */
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 8px;
+            z-index: 1001; /* Above banner */
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+            pointer-events: none; /* Initially not interactive */
+            text-align: center;
+            max-width: 90%;
+        }
+
+        #message-box.visible {
+            opacity: 1;
+            pointer-events: auto; /* Allow interaction when visible */
+        }
+    </style>
 </head>
-<body class="jR8x9d nyoS7c UzCXuf eC9N2e">
-    <div class="warning-banner">
-        ⚠️ THIS IS A PHISHING AWARENESS DEMO - NO REAL CREDENTIALS ARE BEING COLLECTED
+<body class="bg-gray-100 flex flex-col min-h-screen">
+
+    <div class="bg-red-600 text-white text-center p-3 font-semibold text-base fixed w-full z-[1000] top-0 shadow-md">
+        WARNING: This is a DEMO for educational purposes only. This is how phishing pages may appear. Never enter real credentials.
     </div>
 
-    <div class="S7xv8 LZgQXe">
-        <div class="TcuCfd NQ5OL" jsname="rZHESd">
-            <div jscontroller="ziZ8Mc" jsaction="rcuQ6b:npT2md" jsname="P1ekSe" class="Ih3FE" aria-hidden="true">
-                <div jscontroller="ltDFwf" jsaction="transitionend:Zdx3Re" jsname="P1ekSe" role="progressbar" class="sZwd7c B6Vhqe qdulke jK7moc">
-                    <div class="xcNBHc um3FLe"></div>
-                    <div jsname="cQwEuf" class="w2zcLc Iq5ZMc"></div>
-                    <div class="MyvhI TKVRUb" jsname="P1ekSe"><span class="l3q5xe SQxu9c"></span></div>
-                    <div class="MyvhI sUoeld"><span class="l3q5xe SQxu9c"></span></div>
+    <div id="message-box">
+        This is a sample message.
+    </div>
+
+    <div class="flex-grow flex flex-col items-center justify-center p-4 pt-20">
+        <div class="bg-white rounded-2xl shadow-lg p-10 sm:p-12 w-full max-w-5xl">
+
+            <div class="flex flex-col md:flex-row md:gap-x-12 lg:gap-x-16">
+
+                <div class="w-full md:w-3/5 flex flex-col md:justify-center text-center md:text-left mb-8 md:mb-0"> <svg class="mx-auto md:mx-auto mb-10 h-10 w-auto" viewBox="0 0 40 48" fill="currentColor" aria-hidden="true"> <path fill="#4285F4" d="M39.2 24.45c0-1.55-.16-3.04-.43-4.45H20v8h10.73c-.45 2.53-1.86 4.68-4 6.11v5.05h6.5c3.78-3.48 5.97-8.62 5.97-14.71z"></path>
+                      <path fill="#34A853" d="M20 44c5.4 0 9.92-1.79 13.24-4.84l-6.5-5.05C24.95 35.3 22.67 36 20 36c-5.19 0-9.59-3.51-11.15-8.23h-6.7v5.2C5.43 39.51 12.18 44 20 44z"></path>
+                      <path fill="#FABB05" d="M8.85 27.77c-.4-1.19-.62-2.46-.62-3.77s.22-2.58.62-3.77v-5.2h-6.7C.78 17.73 0 20.77 0 24s.78 6.27 2.14 8.97l6.71-5.2z"></path>
+                      <path fill="#E94235" d="M20 12c2.93 0 5.55 1.01 7.62 2.98l5.76-5.76C29.92 5.98 25.39 4 20 4 12.18 4 5.43 8.49 2.14 15.03l6.7 5.2C10.41 15.51 14.81 12 20 12z"></path>
+                    </svg>
+
+                    <h1 class="text-3xl font-normal text-gray-900 mb-3">Sign in</h1>
+                    <p class="text-base text-gray-700">Use your Google Account</p>
+                </div>
+
+                <div class="w-full md:w-2/5 flex flex-col md:pt-16"> <div class="form-group relative mb-4 text-left">
+                        <input type="email" id="email" name="identifier"
+                               class="form-input peer w-full h-14 px-4 pt-4 text-base border border-gray-400 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 placeholder-transparent"
+                               placeholder="Email or phone" autofocus>
+                        <label for="email"
+                               class="text-gray-500 peer-focus:text-blue-600">
+                            Email or phone
+                        </label>
+                    </div>
+
+                    <div class="text-left mb-8">
+                        <a href="#" class="text-sm font-medium text-blue-600 hover:text-blue-700 hover:underline demo-link">
+                            Forgot email?
+                        </a>
+                    </div>
+
+                    <div class="text-left text-sm text-gray-600 mb-10">
+                        Not your computer? Use Guest mode to sign in privately.
+                        <a href="#" class="font-medium text-blue-600 hover:text-blue-700 hover:underline demo-link">
+                            Learn more
+                        </a>
+                    </div>
+
+                    <div class="flex justify-end items-center mt-auto space-x-4">
+                        <button class="create-account-button text-blue-600 hover:text-blue-700 hover:bg-blue-50 font-medium text-sm py-2 px-3 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-blue-500 demo-button">
+                            Create account
+                        </button>
+                        <button class="next-button bg-blue-600 hover:bg-blue-700 text-white font-medium text-sm py-2 px-6 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                            Next
+                        </button>
+                    </div>
                 </div>
             </div>
-            <div class="fAlnEc" id="yDmH0d">
-                <c-wiz jsrenderer="chA7fe" class="A77ntc" jscontroller="b3kMqb" jsaction="rcuQ6b:WYd;" jsname="nUpftc" data-node-index="0;0" jsmodel="hc6Ubd niKKCd">
-                    <div class="Svhjgc" jsname="bN97Pc">
-                        <div class="zIgDIc" jsname="paFcre">
-                            <c-wiz jsrenderer="OTcFib" jsdata="deferred-i6" data-node-index="2;0" jsmodel="hc6Ubd">
-                                <div class="Wf6lSd" jscontroller="rmumx" jsname="n7vHCb">
-                                    <svg xmlns="https://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 40 48" aria-hidden="true" jsname="jjf7Ff">
-                                        <path fill="#4285F4" d="M39.2 24.45c0-1.55-.16-3.04-.43-4.45H20v8h10.73c-.45 2.53-1.86 4.68-4 6.11v5.05h6.5c3.78-3.48 5.97-8.62 5.97-14.71z"></path>
-                                        <path fill="#34A853" d="M20 44c5.4 0 9.92-1.79 13.24-4.84l-6.5-5.05C24.95 35.3 22.67 36 20 36c-5.19 0-9.59-3.51-11.15-8.23h-6.7v5.2C5.43 39.51 12.18 44 20 44z"></path>
-                                        <path fill="#FABB05" d="M8.85 27.77c-.4-1.19-.62-2.46-.62-3.77s.22-2.58.62-3.77v-5.2h-6.7C.78 17.73 0 20.77 0 24s.78 6.27 2.14 8.97l6.71-5.2z"></path>
-                                        <path fill="#E94235" d="M20 12c2.93 0 5.55 1.01 7.62 2.98l5.76-5.76C29.92 5.98 25.39 4 20 4 12.18 4 5.43 8.49 2.14 15.03l6.7 5.2C10.41 15.51 14.81 12 20 12z"></path>
-                                    </svg>
-                                </div>
-                            </c-wiz>
-                            <div class="ObDc3 ZYOIke" jsname="tJHJj">
-                                <h1 class="vAV9bf" id="headingText" jsname="r4nke"><span jsslot="">Sign in</span></h1>
-                                <div class="gNJDp" id="headingSubtext" jsname="VdSJob"><span jsslot="">Use your Google Account</span></div>
-                            </div>
-                        </div>
-                        <div class="UXFQgc" jsname="uybdVe">
-                            <div class="qWK5J">
-                                <div class="xKcayf" jsname="USBQqe">
-                                    <div class="AcKKx" jsname="rEuO1b">
-                                        <form method="post" novalidate="" id="signin-form" jsaction="submit:JM9m2e;">
-                                            <span jsslot="">
-                                                <section class="Em2Ord" jscontroller="Tbb4sb">
-                                                    <header class="vYeFie" jsname="tJHJj" aria-hidden="true"></header>
-                                                    <div class="yTaH4c" jsname="MZArnb">
-                                                        <div jsslot="">
-                                                            <div jscontroller="mvkUhe" jsaction="keydown:C9BaXe;O22p3e:Op2ZO;AHmuwe:Jt1EX;rcuQ6b:rcuQ6b;YqO5N:Lg5SV;rURRne:rcuQ6b;EJh3N:rcuQ6b;sPvj8e:di0fJ;" jsname="dWPKW" class="AFTWye vEQsqe">
-                                                                <div class="rFrNMe X3mtXb UOsO2 ToAxb zKHdkd sdJrJc Tyc9J" jscontroller="pxq3x" jsaction="clickonly:KjsqPd; focus:Jt1EX; blur:fpfTEe; input:Lg5SV" jsname="Ufn6O">
-                                                                    <div class="aCsJod oJeWuf">
-                                                                        <div class="aXBtI Wic03c">
-                                                                            <div class="Xb9hP">
-                                                                                <input type="email" class="whsOnd zHQkBf" jsname="YPqjbf" autocomplete="username webauthn" spellcheck="false" tabindex="0" aria-label="Email or phone" name="identifier" value="" aria-disabled="false" autocapitalize="none" id="identifierId" dir="ltr" data-initial-dir="ltr" data-initial-value="">
-                                                                                <div jsname="YRMmle" class="AxOyFc snByac" aria-hidden="true">Email or phone</div>
-                                                                            </div>
-                                                                            <div class="i9lrp mIZh1c"></div>
-                                                                            <div jsname="XmnwAc" class="OabDMe cXrdqd"></div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="LXRPh">
-                                                                        <div jsname="ty6ygf" class="ovnfwe Is7Fhb"></div>
-                                                                        <div jsname="B34EJ" class="dEOOab RxsGPe" aria-atomic="true" aria-live="assertive"></div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="dMNVAe" jsname="OZNMeb" aria-live="assertive"></div>
-                                                        <div class="dMNVAe"><button type="button" jsname="Cuz2Ue" id="forgotEmail">Forgot email?</button></div>
-                                                        <input type="password" name="hiddenPassword" class="Hvu6D" tabindex="-1" aria-hidden="true" spellcheck="false" jsname="RHeR4d">
-                                                        <div jscontroller="CMcBD" jsname="Si5T8b" class="lbFS4d eLNT1d" jsaction="KWPV0:IMdg8d;rcuQ6b:jqIVcd"></div>
-                                                    </div>
-                                                </section>
-                                            </span>
-                                        </form>
-                                    </div>
-                                    <div jsslot="">
-                                        <div class="RDsYTb">
-                                            <div class="dMNVAe">Not your computer? Use Guest mode to sign in privately. <a href="#" jsname="JFyozc" target="_blank">Learn more about using Guest mode</a></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="JYXaTc" jsname="DH6Rkf" jscontroller="z0u0L">
-                            <div class="O1Slxf" jsname="DhK0U">
-                                <div class="FO2vFd" jsname="QkNstf">
-                                    <div class="n3Clv" jsname="FIbd0b">
-                                        <div jscontroller="f8Gu1e" jsaction="click:cOuCgd;JIbuQc:JIbuQc;" jsname="YU8Bzc" class="XjS9D TrZEUc J7pUA G3hhxb">
-                                            <div class="VfPpkd-dgl2Hf-ppHlrf-sM5MNb" data-is-touch-wrapper="true">
-                                                <button class="VfPpkd-LgbsSe VfPpkd-LgbsSe-OWXEXe-dgl2Hf ksBjEc lKxP2d LQeN7 BqKGqe eR0mzb TrZEUc lw1w4b" jscontroller="soHxf" jsaction="click:cOuCgd;" jsname="LgbsSe" type="button" id="createAccountButton">
-                                                    <div class="VfPpkd-Jh9lGc"></div>
-                                                    <div class="VfPpkd-J1Ukfc-LhBDec"></div>
-                                                    <div class="VfPpkd-RLmnJb"></div>
-                                                    <span jsname="V67aGc" class="VfPpkd-vQzf8d">Create account</span>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="TNTaPb" jsname="k77Iif">
-                                    <div jscontroller="f8Gu1e" jsaction="click:cOuCgd;JIbuQc:JIbuQc;" jsname="Njthtb" class="XjS9D TrZEUc" id="identifierNext">
-                                        <div class="VfPpkd-dgl2Hf-ppHlrf-sM5MNb" data-is-touch-wrapper="true">
-                                            <button class="VfPpkd-LgbsSe VfPpkd-LgbsSe-OWXEXe-k8QpJ VfPpkd-LgbsSe-OWXEXe-dgl2Hf nCP5yc AjY5Oe DuMIQc LQeN7 BqKGqe Jskylb TrZEUc lw1w4b" jscontroller="soHxf" jsaction="click:cOuCgd;" jsname="LgbsSe" type="button" id="nextButton">
-                                                <div class="VfPpkd-Jh9lGc"></div>
-                                                <div class="VfPpkd-J1Ukfc-LhBDec"></div>
-                                                <div class="VfPpkd-RLmnJb"></div>
-                                                <span jsname="V67aGc" class="VfPpkd-vQzf8d">Next</span>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </c-wiz>
-                <div id="ZCHFDb"></div>
-            </div>
         </div>
-        <div class="wmGw4">
-            <c-wiz jsrenderer="ZdRp7e" jsdata="deferred-i1" data-node-index="0;0" jsmodel="hc6Ubd">
-                <footer class="FZfKCe">
-                    <div class="eXa0v" jscontroller="xiZRqc">
-                        <div jsshadow="" class="O1htCb-H9tDt" jsname="rfCUpd" jscontroller="yRXbo">
-                            <div jsname="wSASue" class="VfPpkd-O1htCb VfPpkd-O1htCb-OWXEXe-INsAgc VfPpkd-O1htCb-OWXEXe-di8rgd-V67aGc ReCbLb UAQDDf dEoyBf">
-                                <div class="VfPpkd-TkwUic" jsname="oYxtQd" role="combobox" tabindex="0" aria-haspopup="listbox" aria-expanded="false" aria-labelledby="i2">
-                                    <span class="VfPpkd-NSFCdd-i5vt6e VfPpkd-NSFCdd-i5vt6e-OWXEXe-NSFCdd VfPpkd-NSFCdd-i5vt6e-OWXEXe-di8rgd-V67aGc" jsname="B9mpmd">
-                                        <span class="VfPpkd-NSFCdd-Brv4Fb"></span>
-                                        <span class="VfPpkd-NSFCdd-MpmGFe"></span>
-                                    </span>
-                                    <span class="VfPpkd-uusGie-fmcmS-haAclf" aria-hidden="true">
-                                        <span id="i2" class="VfPpkd-uusGie-fmcmS" jsname="Fb0Bif">English (United States)</span>
-                                    </span>
-                                    <span class="VfPpkd-t08AT-Bz112c">
-                                        <svg class="VfPpkd-t08AT-Bz112c-Bd00G" viewBox="7 10 10 5" focusable="false" aria-hidden="true">
-                                            <polygon class="VfPpkd-t08AT-Bz112c-mt1Mkb" stroke="none" fill-rule="evenodd" points="7 10 12 15 17 10"></polygon>
-                                            <polygon class="VfPpkd-t08AT-Bz112c-auswjd" stroke="none" fill-rule="evenodd" points="7 15 12 10 17 15"></polygon>
-                                        </svg>
-                                    </span>
-                                    <span id="i4" style="display: none" aria-hidden="true" role="listbox"></span>
-                                    <div class="VfPpkd-aPP78e"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <ul class="HwzH1e">
-                        <li class="qKvP1b"><a class="AVAq4d TrZEUc" href="#" target="_blank">Help</a></li>
-                        <li class="qKvP1b"><a class="AVAq4d TrZEUc" href="#" target="_blank">Privacy</a></li>
-                        <li class="qKvP1b"><a class="AVAq4d TrZEUc" href="#" target="_blank">Terms</a></li>
-                    </ul>
-                </footer>
-            </c-wiz>
+
+        <div class="w-full max-w-5xl mt-4 flex justify-between items-center text-xs text-gray-600 px-2">
+            <div class="relative">
+                <select class="appearance-none bg-transparent pr-6 focus:outline-none demo-select">
+                    <option>English (United States)</option>
+                    </select>
+                <svg class="w-4 h-4 absolute right-0 top-1/2 transform -translate-y-1/2 pointer-events-none" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+            </div>
+
+            <div class="flex space-x-6">
+                <a href="#" class="hover:underline demo-link">Help</a>
+                <a href="#" class="hover:underline demo-link">Privacy</a>
+                <a href="#" class="hover:underline demo-link">Terms</a>
+            </div>
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        const messageBox = document.getElementById('message-box');
+        let messageTimeout; // To store the timeout ID
+
+        // Function to show the message box
+        function showMessage(text, duration = 4000) {
+            // Clear any existing timeout
+            if (messageTimeout) {
+                clearTimeout(messageTimeout);
+            }
+
+            messageBox.textContent = text;
+            messageBox.classList.add('visible');
+
+            // Set a timeout to hide the message box
+            messageTimeout = setTimeout(() => {
+                hideMessage();
+            }, duration);
+        }
+
+        // Function to hide the message box
+        function hideMessage() {
+             if (messageTimeout) {
+                clearTimeout(messageTimeout);
+                messageTimeout = null;
+            }
+            messageBox.classList.remove('visible');
+        }
+
+        // Add event listener to hide message box on click
+        messageBox.addEventListener('click', hideMessage);
+
+
+        // Event listener for the "Next" button
+        document.querySelector('.next-button').addEventListener('click', function() {
+            const email = document.getElementById('email').value;
+            if (email) {
+                 showMessage('PHISHING DEMO: If this were real, your email/phone "' + email + '" would now be sent to the attacker.');
+            } else {
+                 showMessage('PHISHING DEMO: In a real attack, clicking Next without entering data might still reveal information or lead to the password step.');
+            }
+            // In a real phishing scenario, this would likely submit the form
+            // or redirect to a fake password page.
+        });
+
+        // Event listeners for other interactive elements
+        document.querySelectorAll('.demo-link, .demo-button, .demo-select').forEach(el => {
+            // Prevent default link navigation/button actions for demo elements
+            if (el.tagName === 'A') {
+                el.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    showMessage('DEMO: This link/button is non-functional for this educational demonstration.');
+                });
+            } else if (el.tagName === 'BUTTON' && !el.classList.contains('next-button')) { // Exclude next button from this generic message
+                 el.addEventListener('click', function() {
+                    showMessage('DEMO: This button is non-functional for this educational demonstration.');
+                });
+            } else if (el.tagName === 'SELECT') {
+                 el.addEventListener('change', function() {
+                    showMessage('DEMO: Language selection is non-functional for this educational demonstration.');
+                     // Reset selection visually if needed
+                     el.selectedIndex = 0;
+                });
+            }
+        });
+
+        // Simple check to ensure floating label works on page load if autofilled
+        document.addEventListener('DOMContentLoaded', () => {
+            const input = document.getElementById('email');
+            if (input.value) {
+                // Ensures label is floated if browser autofills
+                input.dispatchEvent(new Event('input')); // Trigger potential JS listeners
+            }
+        });
+
+    </script>
 </body>
-</html> 
+</html>
