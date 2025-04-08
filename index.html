@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Sign In - Phishing Awareness Demo</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="icon.png">
+</head>
+<body>
+    <div class="warning-banner">
+        ⚠️ THIS IS A PHISHING AWARENESS DEMO - NO REAL CREDENTIALS ARE BEING COLLECTED
+    </div>
+    
+    <div class="container">
+        <div class="logo">
+            <img src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png" alt="Google">
+        </div>
+        
+        <div class="signin-box">
+            <h1>Sign in</h1>
+            <p>to continue to Gmail</p>
+            
+            <form id="signin-form">
+                <div class="input-container">
+                    <input type="email" id="email" placeholder="Email or phone">
+                </div>
+                <div class="input-container">
+                    <input type="password" id="password" placeholder="Password">
+                </div>
+                <div class="forgot-email">
+                    <a href="#">Forgot email?</a>
+                </div>
+                <div class="disclaimer">
+                    Not your computer? Use Guest mode to sign in privately.
+                    <a href="#">Learn more</a>
+                </div>
+                <div class="button-container">
+                    <button type="submit" class="next-button">Sign in</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="language-selector">
+            <select>
+                <option>English (United States)</option>
+            </select>
+        </div>
+        <div class="footer-links">
+            <a href="#">Help</a>
+            <a href="#">Privacy</a>
+            <a href="#">Terms</a>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 

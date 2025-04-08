@@ -1,0 +1,164 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Google Sans', Arial, sans-serif;
+}
+
+body {
+    background-color: #fff;
+    color: #202124;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.warning-banner {
+    background-color: #fbbc05;
+    color: #202124;
+    text-align: center;
+    padding: 12px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.container {
+    max-width: 450px;
+    margin: 0 auto;
+    padding: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo {
+    margin-bottom: 20px;
+}
+
+.logo img {
+    width: 92px;
+    height: 30px;
+}
+
+.signin-box {
+    width: 100%;
+    border: 1px solid #dadce0;
+    border-radius: 8px;
+    padding: 24px;
+}
+
+.signin-box h1 {
+    font-size: 24px;
+    font-weight: 400;
+    margin-bottom: 8px;
+}
+
+.signin-box p {
+    font-size: 16px;
+    color: #202124;
+    margin-bottom: 24px;
+}
+
+.input-container {
+    margin-bottom: 16px;
+}
+
+input[type="email"] {
+    width: 100%;
+    padding: 13px 15px;
+    font-size: 16px;
+    border: 1px solid #dadce0;
+    border-radius: 4px;
+    outline: none;
+}
+
+input[type="password"] {
+    width: 100%;
+    padding: 13px 15px;
+    font-size: 16px;
+    border: 1px solid #dadce0;
+    border-radius: 4px;
+    outline: none;
+}
+
+input[type="email"]:focus,
+input[type="password"]:focus {
+    border: 2px solid #1a73e8;
+}
+
+.forgot-email {
+    margin-bottom: 16px;
+}
+
+.forgot-email a {
+    color: #1a73e8;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.disclaimer {
+    font-size: 14px;
+    color: #5f6368;
+    margin-bottom: 24px;
+}
+
+.disclaimer a {
+    color: #1a73e8;
+    text-decoration: none;
+}
+
+.button-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.create-account {
+    color: #1a73e8;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.next-button {
+    background-color: #1a73e8;
+    color: white;
+    border: none;
+    padding: 8px 24px;
+    border-radius: 4px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.next-button:hover {
+    background-color: #1557b0;
+}
+
+.footer {
+    background-color: #f8f9fa;
+    padding: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    color: #5f6368;
+}
+
+.language-selector select {
+    border: none;
+    background: none;
+    color: #5f6368;
+    cursor: pointer;
+}
+
+.footer-links a {
+    color: #5f6368;
+    text-decoration: none;
+    margin-left: 24px;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+} 
