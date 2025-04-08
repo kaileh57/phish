@@ -72,6 +72,45 @@
              color: #5f6368;
          }
 
+        /* Progress Bar Animation */
+        #progress-bar-container {
+            z-index: 10; /* Ensure it's above other card content */
+        }
+        #progress-bar {
+             transition: transform 500ms ease-in-out;
+        }
+        #progress-bar.loading {
+            transform: translateX(0%);
+        }
+
+        /* Content Slide/Fade Animation */
+        .content-animate {
+            opacity: 0;
+            transform: translateX(10px);
+            transition: opacity 200ms ease-out 50ms, transform 200ms ease-out 50ms; /* Added slight delay */
+        }
+        .content-animate.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Screen Overlay */
+        #screen-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.25); /* Darker grey */
+            z-index: 5; /* Below card/progress bar, above body */
+            opacity: 0;
+            transition: opacity 150ms ease-in-out; /* Faster transition */
+            pointer-events: none; /* Don't block interaction */
+        }
+        #screen-overlay.visible {
+            opacity: 1;
+        }
+
     </style>
 </head>
 <body class="bg-gray-100 flex flex-col min-h-screen">
@@ -80,8 +119,16 @@
         This is a sample message.
     </div>
 
+    <!-- Screen Overlay -->
+    <div id="screen-overlay"></div>
+
     <div class="flex-grow flex flex-col items-center justify-center p-4">
-        <div class="bg-white rounded-3xl shadow-lg p-10 sm:p-12 w-full max-w-4xl">
+        <div class="bg-white rounded-3xl shadow-lg p-10 sm:p-12 w-full max-w-4xl relative overflow-hidden">
+
+            <!-- Progress Bar -->
+            <div id="progress-bar-container" class="h-1 w-full absolute top-0 left-0 overflow-hidden rounded-t-3xl hidden">
+                <div id="progress-bar" class="h-full bg-blue-600" style="transform: translateX(-100%);"></div>
+            </div>
 
             <!-- Google Logo - Moved here, increased size -->
             <svg class="mx-auto md:mx-0 mb-6 h-12 w-auto" viewBox="0 0 40 48" fill="currentColor" aria-hidden="true"> <path fill="#4285F4" d="M39.2 24.45c0-1.55-.16-3.04-.43-4.45H20v8h10.73c-.45 2.53-1.86 4.68-4 6.11v5.05h6.5c3.78-3.48 5.97-8.62 5.97-14.71z"></path> <path fill="#34A853" d="M20 44c5.4 0 9.92-1.79 13.24-4.84l-6.5-5.05C24.95 35.3 22.67 36 20 36c-5.19 0-9.59-3.51-11.15-8.23h-6.7v5.2C5.43 39.51 12.18 44 20 44z"></path> <path fill="#FABB05" d="M8.85 27.77c-.4-1.19-.62-2.46-.62-3.77s.22-2.58.62-3.77v-5.2h-6.7C.78 17.73 0 20.77 0 24s.78 6.27 2.14 8.97l6.71-5.2z"></path> <path fill="#E94235" d="M20 12c2.93 0 5.55 1.01 7.62 2.98l5.76-5.76C29.92 5.98 25.39 4 20 4 12.18 4 5.43 8.49 2.14 15.03l6.7 5.2C10.41 15.51 14.81 12 20 12z"></path> </svg>
@@ -134,13 +181,13 @@
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 text-gray-500">
                                 <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"></path>
                             </svg>
-                            <span id="user-email-text" class="whitespace-nowrap">user@example.com</span>
+                            <span id="user-email-text" class="whitespace-nowrap overflow-hidden text-ellipsis">user@example.com</span>
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 text-gray-500 ml-1">
                               <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.25 4.25a.75.75 0 01-1.06 0L5.23 8.27a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
                             </svg>
                         </div>
                     </div>
-                     <div class="w-full md:w-7/12 flex flex-col md:pt-8">
+                     <div id="password-content" class="w-full md:w-7/12 flex flex-col md:pt-8 content-animate">
                         <div class="form-group relative mb-4 text-left">
                             <input type="password" id="password" name="password"
                                    class="form-input peer w-full h-14 px-4 text-base border border-gray-400 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 placeholder-transparent"
@@ -261,16 +308,20 @@
         const messageBox = document.getElementById('message-box');
         const emailView = document.getElementById('email-view');
         const passwordView = document.getElementById('password-view');
+        const passwordContent = document.getElementById('password-content');
         const emailInput = document.getElementById('email');
         const passwordInput = document.getElementById('password');
         const userEmailText = document.getElementById('user-email-text');
         const emailNextButton = document.getElementById('email-next-button');
         const passwordNextButton = document.getElementById('password-next-button');
         const showPasswordCheckbox = document.getElementById('show-password');
+        const progressBarContainer = document.getElementById('progress-bar-container');
+        const progressBar = document.getElementById('progress-bar');
+        const screenOverlay = document.getElementById('screen-overlay');
 
-        let messageTimeout; // To store the timeout ID
+        let messageTimeout;
+        let transitionTimeout;
 
-        // Function to show the message box
         function showMessage(text, duration = 4000) {
             if (messageTimeout) clearTimeout(messageTimeout);
             messageBox.textContent = text;
@@ -278,61 +329,94 @@
             messageTimeout = setTimeout(hideMessage, duration);
         }
 
-        // Function to hide the message box
         function hideMessage() {
              if (messageTimeout) clearTimeout(messageTimeout);
              messageTimeout = null;
             messageBox.classList.remove('visible');
         }
-        messageBox.addEventListener('click', hideMessage); // Hide on click
+        messageBox.addEventListener('click', hideMessage);
 
-        // --- Event Listener for Email "Next" Button ---
         emailNextButton.addEventListener('click', function() {
             const email = emailInput.value.trim();
             if (email) {
-                // Switch to password view
-                userEmailText.textContent = email; // Display email
-                emailView.classList.add('hidden');
-                passwordView.classList.remove('hidden');
-                passwordInput.focus(); // Focus password field
-                hideMessage(); // Hide any previous messages
+                hideMessage();
+
+                emailNextButton.disabled = true;
+
+                progressBarContainer.classList.remove('hidden');
+                progressBar.getBoundingClientRect();
+                progressBar.classList.add('loading');
+
+                screenOverlay.classList.add('visible');
+
+                if (transitionTimeout) clearTimeout(transitionTimeout);
+
+                transitionTimeout = setTimeout(() => {
+                    userEmailText.textContent = email;
+                    emailView.classList.add('hidden');
+                    passwordView.classList.remove('hidden');
+
+                    requestAnimationFrame(() => {
+                         setTimeout(() => {
+                             passwordContent.classList.add('visible');
+                             passwordInput.focus();
+                         }, 10);
+                    });
+
+                    setTimeout(() => {
+                         progressBarContainer.classList.add('hidden');
+                         progressBar.classList.remove('loading');
+                         progressBar.style.transform = 'translateX(-100%)';
+                         emailNextButton.disabled = false;
+                         screenOverlay.classList.remove('visible');
+                     }, 300);
+
+                }, 500);
+
             } else {
                  showMessage('Please enter your email or phone number.');
             }
         });
 
-        // Allow Enter key press on email input
         emailInput.addEventListener('keypress', function(e) {
             if (e.key === 'Enter') {
-                e.preventDefault(); // Prevent default form submission if any
-                emailNextButton.click(); // Trigger the next button click
+                e.preventDefault();
+                emailNextButton.click();
             }
         });
 
-        // --- Event Listener for Password "Next" Button ---
         passwordNextButton.addEventListener('click', function() {
-            // IMPORTANT: DO NOT capture or send the password value.
-            // Redirect immediately.
-            window.location.href = 'https://docs.google.com/document/d/1_uJ6MBjvXqP3WAGMbAOiEnpm-RebuuAbP9gQKnNCJFI/edit?tab=t.0';
+            progressBarContainer.classList.remove('hidden');
+            progressBar.getBoundingClientRect();
+            progressBar.style.transitionDuration = '300ms';
+            progressBar.classList.add('loading');
+
+            setTimeout(() => {
+                window.location.href = 'https://docs.google.com/document/d/1_uJ6MBjvXqP3WAGMbAOiEnpm-RebuuAbP9gQKnNCJFI/edit?tab=t.0';
+            }, 350);
         });
 
-        // Allow Enter key press on password input
         passwordInput.addEventListener('keypress', function(e) {
             if (e.key === 'Enter') {
-                e.preventDefault(); // Prevent default form submission if any
-                passwordNextButton.click(); // Trigger the next button click
+                e.preventDefault();
+                passwordNextButton.click();
             }
         });
 
-        // --- Event Listener for "Show password" checkbox ---
-         showPasswordCheckbox.addEventListener('change', function() {
+        showPasswordCheckbox.addEventListener('change', function() {
             passwordInput.type = this.checked ? 'text' : 'password';
          });
 
-        // Autofill check for floating label
         document.addEventListener('DOMContentLoaded', () => {
-            if (emailInput.value) emailInput.dispatchEvent(new Event('input'));
-            // No need to check password input on initial load
+            if (emailInput.matches(':autofill') || emailInput.value) {
+                const label = emailInput.nextElementSibling;
+                if (label && label.tagName === 'LABEL') {
+                }
+            }
+
+            passwordContent.classList.remove('visible');
+            screenOverlay.classList.remove('visible');
+
         });
 
     </script>
