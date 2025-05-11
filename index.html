@@ -3,474 +3,419 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Access Denied</title>
+    <title>Sign in - Google Accounts</title>
     <link rel="icon" href="icon.png" type="image/png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
+        /* Apply Inter font globally */
         body {
             font-family: 'Inter', sans-serif;
         }
 
-        .eyo label {
+        /* Basic styling for the floating label effect */
+        .form-group label {
             position: absolute;
             top: 50%;
-            left: 16px;
+            left: 16px; /* Adjust based on input padding */
             transform: translateY(-50%);
             transition: all 0.2s ease-out;
             pointer-events: none;
-            color: #5f6368;
-            font-size: 1rem;
-            background-color: white;
-            padding: 0 4px;
+            color: #5f6368; /* Google's placeholder color */
+            font-size: 1rem; /* 16px */
+            background-color: white; /* Match card background */
+            padding: 0 4px; /* Add padding to prevent overlap with border */
         }
 
-        .wkv:focus + label,
-        .wkv:not(:placeholder-shown) + label {
+        /* When input is focused or has value (using Tailwind peer) */
+        .form-input:focus + label,
+        .form-input:not(:placeholder-shown) + label {
             top: 0;
-            left: 12px;
-            font-size: 0.75rem;
-            color: #1a73e8;
+            left: 12px; /* Adjust position */
+            font-size: 0.75rem; /* 12px */
+            color: #1a73e8; /* Google's blue focus color */
             transform: translateY(-50%);
         }
 
-        #zbt {
+        /* Style for the custom message box */
+        #message-box {
             position: fixed;
-            top: 20px;
+            top: 0px; /* Reduced further to 0 */
             left: 50%;
             transform: translateX(-50%);
             background-color: rgba(0, 0, 0, 0.7);
             color: white;
             padding: 15px 25px;
             border-radius: 8px;
-            z-index: 1050;
+            z-index: 1001; /* Above banner */
             opacity: 0;
             transition: opacity 0.3s ease-in-out;
-            pointer-events: none;
+            pointer-events: none; /* Initially not interactive */
             text-align: center;
             max-width: 90%;
         }
 
-        #zbt.jxa {
+        #message-box.visible {
             opacity: 1;
-            pointer-events: auto;
+            pointer-events: auto; /* Allow interaction when visible */
         }
 
+        /* Simple user identifier display style */
         #user-email-display {
-
+            /* Style applied via Tailwind classes now */
         }
          #user-email-display svg {
-             width: 1.25rem;
-             height: 1.25rem;
+             width: 1.25rem; /* 20px */
+             height: 1.25rem; /* 20px */
              color: #5f6368;
          }
 
-        #xnj {
-            z-index: 10;
+        /* Progress Bar Animation */
+        #progress-bar-container {
+            z-index: 10; /* Ensure it's above other card content */
         }
-        #rwl {
+        #progress-bar {
              transition: transform 500ms ease-in-out;
         }
-        #rwl.psz {
+        #progress-bar.loading {
             transform: translateX(0%);
         }
 
-        .nup {
+        /* Content Slide/Fade Animation */
+        .content-animate {
             opacity: 0;
             transform: translateX(10px);
-            transition: opacity 200ms ease-out 50ms, transform 200ms ease-out 50ms;
+            transition: opacity 200ms ease-out 50ms, transform 200ms ease-out 50ms; /* Added slight delay */
         }
-        .nup.jxa {
+        .content-animate.visible {
             opacity: 1;
             transform: translateX(0);
         }
 
-        #tdq {
+        /* Screen Overlay */
+        #screen-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.25);
-            z-index: 1040;
+            background-color: rgba(0, 0, 0, 0.25); /* Darker grey */
+            z-index: 5; /* Below card/progress bar, above body */
             opacity: 0;
-            transition: opacity 150ms ease-in-out;
-            pointer-events: none;
+            transition: opacity 150ms ease-in-out; /* Faster transition */
+            pointer-events: none; /* Don't block interaction */
         }
-        #tdq.jxa {
+        #screen-overlay.visible {
             opacity: 1;
-        }
-
-        #xqw {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            border: none;
-            z-index: 1;
-        }
-
-        #zlm {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            background-color: transparent;
-            z-index: 10;
-            opacity: 0;
-            transition: opacity 0.5s ease-in-out;
-            pointer-events: none;
-        }
-
-        #zlm.kfo {
-            opacity: 1;
-            pointer-events: auto;
-        }
-
-        /* Added white overlay styles */
-        #yvp {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: white;
-            z-index: 5;
-            opacity: 1;
-            transition: opacity 0.3s ease-in-out;
-            pointer-events: none; /* Allow clicks through when invisible */
         }
 
     </style>
 </head>
-<body class="flex flex-col min-h-screen">
+<body class="bg-gray-100 flex flex-col min-h-screen">
 
-    <iframe id="xqw" src="https://thecatsite.com/"></iframe>
-    <div id="yvp"></div> <!-- Added white overlay -->
-
-    <div id="zbt">
-
+    <div id="message-box">
+        This is a sample message.
     </div>
 
-    <div id="tdq"></div>
+    <!-- Screen Overlay -->
+    <div id="screen-overlay"></div>
 
-    <div id="zlm">
-        <div class="p-4 w-full flex-grow flex flex-col items-center justify-center">
-            <div class="bg-white rounded-3xl shadow-lg p-10 sm:p-12 w-full max-w-4xl relative overflow-hidden">
+    <div class="flex-grow flex flex-col items-center justify-center p-4">
+        <div class="bg-white rounded-3xl shadow-lg p-10 sm:p-12 w-full max-w-4xl relative overflow-hidden">
 
-                <div id="xnj" class="h-1 w-full absolute top-0 left-0 overflow-hidden rounded-t-3xl hidden">
-                    <div id="rwl" class="h-full bg-blue-600" style="transform: translateX(-100%);"></div>
-                </div>
+            <!-- Progress Bar -->
+            <div id="progress-bar-container" class="h-1 w-full absolute top-0 left-0 overflow-hidden rounded-t-3xl hidden">
+                <div id="progress-bar" class="h-full bg-blue-600" style="transform: translateX(-100%);"></div>
+            </div>
 
-                <svg class="mx-auto md:mx-0 mb-6 h-12 w-auto" viewBox="0 0 40 48" fill="currentColor" aria-hidden="true"> <path fill="#4285F4" d="M39.2 24.45c0-1.55-.16-3.04-.43-4.45H20v8h10.73c-.45 2.53-1.86 4.68-4 6.11v5.05h6.5c3.78-3.48 5.97-8.62 5.97-14.71z"></path> <path fill="#34A853" d="M20 44c5.4 0 9.92-1.79 13.24-4.84l-6.5-5.05C24.95 35.3 22.67 36 20 36c-5.19 0-9.59-3.51-11.15-8.23h-6.7v5.2C5.43 39.51 12.18 44 20 44z"></path> <path fill="#FABB05" d="M8.85 27.77c-.4-1.19-.62-2.46-.62-3.77s.22-2.58.62-3.77v-5.2h-6.7C.78 17.73 0 20.77 0 24s.78 6.27 2.14 8.97l6.71-5.2z"></path> <path fill="#E94235" d="M20 12c2.93 0 5.55 1.01 7.62 2.98l5.76-5.76C29.92 5.98 25.39 4 20 4 12.18 4 5.43 8.49 2.14 15.03l6.7 5.2C10.41 15.51 14.81 12 20 12z"></path> </svg>
+            <!-- Google Logo - Moved here, increased size -->
+            <svg class="mx-auto md:mx-0 mb-6 h-12 w-auto" viewBox="0 0 40 48" fill="currentColor" aria-hidden="true"> <path fill="#4285F4" d="M39.2 24.45c0-1.55-.16-3.04-.43-4.45H20v8h10.73c-.45 2.53-1.86 4.68-4 6.11v5.05h6.5c3.78-3.48 5.97-8.62 5.97-14.71z"></path> <path fill="#34A853" d="M20 44c5.4 0 9.92-1.79 13.24-4.84l-6.5-5.05C24.95 35.3 22.67 36 20 36c-5.19 0-9.59-3.51-11.15-8.23h-6.7v5.2C5.43 39.51 12.18 44 20 44z"></path> <path fill="#FABB05" d="M8.85 27.77c-.4-1.19-.62-2.46-.62-3.77s.22-2.58.62-3.77v-5.2h-6.7C.78 17.73 0 20.77 0 24s.78 6.27 2.14 8.97l6.71-5.2z"></path> <path fill="#E94235" d="M20 12c2.93 0 5.55 1.01 7.62 2.98l5.76-5.76C29.92 5.98 25.39 4 20 4 12.18 4 5.43 8.49 2.14 15.03l6.7 5.2C10.41 15.51 14.81 12 20 12z"></path> </svg>
 
-                <div id="uqt">
-                    <div class="flex flex-col md:flex-row md:gap-x-12 lg:gap-x-16">
-                        <div class="w-full md:w-5/12 flex flex-col text-center md:text-left mb-8 md:mb-0">
-                            <h1 class="text-3xl font-normal text-gray-900 mb-3">Sign in</h1>
-                            <p class="text-base text-gray-700">Use your Google Account</p>
-                        </div>
-
-                        <div class="w-full md:w-7/12 flex flex-col">
-                            <div class="eyo relative mb-4 text-left">
-                                <input type="email" id="kzs" name="identifier"
-                                       class="wkv peer w-full h-14 px-4 text-base border border-gray-400 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 placeholder-transparent"
-                                       placeholder="Email or phone" autofocus>
-                                <label for="kzs" class="text-gray-500 peer-focus:text-blue-600">
-                                    Email or phone
-                                </label>
-                            </div>
-                            <div class="text-left mb-8">
-                                <a href="#" class="text-sm font-medium text-blue-600 hover:text-blue-700 hover:underline demo-link">
-                                    Forgot email?
-                                </a>
-                            </div>
-                            <div class="text-left text-sm text-gray-600 mb-10">
-                                Not your computer? Use Guest mode to sign in&nbsp;privately.
-                                <br>
-                                <a href="#" target="_blank" rel="noopener noreferrer" class="font-medium text-blue-600 hover:text-blue-700 hover:underline">
-                                    Learn more about using Guest mode
-                                </a>
-                            </div>
-                            <div class="flex justify-end items-center mt-auto space-x-4">
-                                <button class="create-account-button text-blue-600 hover:text-blue-700 hover:bg-blue-50 font-medium text-sm py-2 px-3 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-blue-500 demo-button">
-                                    Create account
-                                </button>
-                                <button id="gpy" class="next-button bg-blue-600 hover:bg-blue-700 text-white font-medium text-sm py-2 px-6 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                                    Next
-                                </button>
-                            </div>
-                        </div>
+            <div id="email-view">
+                <div class="flex flex-col md:flex-row md:gap-x-12 lg:gap-x-16">
+                    <div class="w-full md:w-5/12 flex flex-col text-center md:text-left mb-8 md:mb-0">
+                        <h1 class="text-3xl font-normal text-gray-900 mb-3">Sign in</h1>
+                        <p class="text-base text-gray-700">Use your Google Account</p>
                     </div>
-                </div>
 
-                <div id="sgh" class="hidden">
-                     <div class="flex flex-col md:flex-row md:gap-x-12 lg:gap-x-16 md:items-start">
-                        <div class="w-full md:w-5/12 flex flex-col text-center md:text-left mb-8 md:mb-0">
-                            <h1 class="text-3xl font-normal text-gray-900 mb-3">Welcome</h1>
-                             <div id="lvd" class="mx-auto md:mx-0 flex w-fit items-center gap-2 px-3 py-1 border border-gray-300 rounded-full text-sm text-gray-700 mb-4 max-w-full">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 text-gray-500">
-                                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"></path>
-                                </svg>
-                                <span id="cfk" class="whitespace-nowrap overflow-hidden text-ellipsis">user@example.com</span>
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 text-gray-500 ml-1">
-                                  <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.25 4.25a.75.75 0 01-1.06 0L5.23 8.27a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
-                                </svg>
-                            </div>
+                    <div class="w-full md:w-7/12 flex flex-col">
+                        <div class="form-group relative mb-4 text-left">
+                            <input type="email" id="email" name="identifier"
+                                   class="form-input peer w-full h-14 px-4 text-base border border-gray-400 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 placeholder-transparent"
+                                   placeholder="Email or phone" autofocus>
+                            <label for="email" class="text-gray-500 peer-focus:text-blue-600">
+                                Email or phone
+                            </label>
                         </div>
-                         <div id="aef" class="w-full md:w-7/12 flex flex-col md:pt-8 nup">
-                            <div class="eyo relative mb-4 text-left">
-                                <input type="password" id="ijm" name="password"
-                                       class="wkv peer w-full h-14 px-4 text-base border border-gray-400 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 placeholder-transparent"
-                                       placeholder="Enter your password" autocomplete="current-password">
-                                <label for="ijm" class="text-gray-500 peer-focus:text-blue-600">
-                                    Enter your password
-                                </label>
-                            </div>
-                             <div class="mb-6 text-left">
-                                 <label class="inline-flex items-center">
-                                     <input type="checkbox" id="mqr" class="form-checkbox h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500 mr-2">
-                                     <span class="ml-2 text-sm text-gray-600">Show password</span>
-                                 </label>
-                             </div>
-                            <div class="flex justify-end items-center mt-10 space-x-4">
-                                <a href="#" class="text-sm font-medium text-blue-600 hover:text-blue-700 hover:underline demo-link">
-                                    Forgot password?
-                                </a>
-                                <button id="vyh" class="next-button bg-blue-600 hover:bg-blue-700 text-white font-medium text-sm py-2 px-6 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                                    Next
-                                </button>
-                            </div>
+                        <div class="text-left mb-8">
+                            <a href="#" class="text-sm font-medium text-blue-600 hover:text-blue-700 hover:underline demo-link">
+                                Forgot email?
+                            </a>
+                        </div>
+                        <div class="text-left text-sm text-gray-600 mb-10">
+                            Not your computer? Use Guest mode to sign in&nbsp;privately.
+                            <br>
+                            <a href="https://support.google.com/chrome/answer/6130773?hl=en" target="_blank" rel="noopener noreferrer" class="font-medium text-blue-600 hover:text-blue-700 hover:underline">
+                                Learn more about using Guest mode
+                            </a>
+                        </div>
+                        <div class="flex justify-end items-center mt-auto space-x-4">
+                            <button class="create-account-button text-blue-600 hover:text-blue-700 hover:bg-blue-50 font-medium text-sm py-2 px-3 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-blue-500 demo-button">
+                                Create account
+                            </button>
+                            <button id="email-next-button" class="next-button bg-blue-600 hover:bg-blue-700 text-white font-medium text-sm py-2 px-6 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                                Next
+                            </button>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="w-full max-w-4xl flex justify-between items-center text-xs text-gray-600 px-4 mt-4">
-                <div class="relative">
-                    <select class="appearance-none bg-transparent pr-6 focus:outline-none demo-select">
-                        <option selected>English (United States)</option>
-                        <option>Afrikaans</option>
-                        <option>Azərbaycan</option>
-                        <option>Bahasa Indonesia</option>
-                        <option>Bahasa Melayu</option>
-                        <option>Bosanski</option>
-                        <option>Català</option>
-                        <option>Čeština</option>
-                        <option>Dansk</option>
-                        <option>Deutsch</option>
-                        <option>Eesti</option>
-                        <option>English (United Kingdom)</option>
-                        <option>Español (España)</option>
-                        <option>Español (Latinoamérica)</option>
-                        <option>Euskara</option>
-                        <option>Filipino</option>
-                        <option>Français (Canada)</option>
-                        <option>Français (France)</option>
-                        <option>Galego</option>
-                        <option>Hrvatski</option>
-                        <option>IsiZulu</option>
-                        <option>Íslenska</option>
-                        <option>Italiano</option>
-                        <option>Kiswahili</option>
-                        <option>Latviešu</option>
-                        <option>Lietuvių</option>
-                        <option>Magyar</option>
-                        <option>Nederlands</option>
-                        <option>Norsk</option>
-                        <option>O'zbek</option>
-                        <option>Polski</option>
-                        <option>Português (Brasil)</option>
-                        <option>Português (Portugal)</option>
-                        <option>Română</option>
-                        <option>Shqip</option>
-                        <option>Slovenčina</option>
-                        <option>Slovenščina</option>
-                        <option>Srpski (latinica)</option>
-                        <option>Suomi</option>
-                        <option>Svenska</option>
-                        <option>Tiếng Việt</option>
-                        <option>Türkçe</option>
-                        <option>Ελληνικά</option>
-                        <option>Български</option>
-                        <option>Македонски</option>
-                        <option>Русский</option>
-                        <option>Српски</option>
-                        <option>Українська</option>
-                        <option>ქართული</option>
-                        <option>հայերեն</option>
-                        <option>עברית</option>
-                        <option>اردو</option>
-                        <option>العربية</option>
-                        <option>فارسی</option>
-                        <option>አማርኛ</option>
-                        <option>मराठी</option>
-                        <option>हिन्दी</option>
-                        <option>বাংলা</option>
-                        <option>ਪੰਜਾਬੀ</option>
-                        <option>ગુજરાતી</option>
-                        <option>தமிழ்</option>
-                        <option>తెలుగు</option>
-                        <option>ಕನ್ನಡ</option>
-                        <option>മലയാളം</option>
-                        <option>සිංහල</option>
-                        <option>ไทย</option>
-                        <option>ລາວ</option>
-                        <option>မြန်မာ</option>
-                        <option>ខ្មែរ</option>
-                        <option>한국어</option>
-                        <option>中文 (香港)</option>
-                        <option>中文 (简体)</option>
-                        <option>中文 (繁體)</option>
-                        <option>日本語</option>
-                    </select>
-                    <svg class="w-4 h-4 absolute right-0 top-1/2 transform -translate-y-1/2 pointer-events-none text-gray-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+            <div id="password-view" class="hidden">
+                 <div class="flex flex-col md:flex-row md:gap-x-12 lg:gap-x-16 md:items-start">
+                    <div class="w-full md:w-5/12 flex flex-col text-center md:text-left mb-8 md:mb-0">
+                        <h1 class="text-3xl font-normal text-gray-900 mb-3">Welcome</h1>
+                         <div id="user-email-display" class="mx-auto md:mx-0 flex w-fit items-center gap-2 px-3 py-1 border border-gray-300 rounded-full text-sm text-gray-700 mb-4 max-w-full">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 text-gray-500">
+                                <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"></path>
+                            </svg>
+                            <span id="user-email-text" class="whitespace-nowrap overflow-hidden text-ellipsis">user@example.com</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 text-gray-500 ml-1">
+                              <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.25 4.25a.75.75 0 01-1.06 0L5.23 8.27a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+                            </svg>
+                        </div>
+                    </div>
+                     <div id="password-content" class="w-full md:w-7/12 flex flex-col md:pt-8 content-animate">
+                        <div class="form-group relative mb-4 text-left">
+                            <input type="password" id="password" name="password"
+                                   class="form-input peer w-full h-14 px-4 text-base border border-gray-400 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 placeholder-transparent"
+                                   placeholder="Enter your password" autocomplete="current-password">
+                            <label for="password" class="text-gray-500 peer-focus:text-blue-600">
+                                Enter your password
+                            </label>
+                        </div>
+                         <div class="mb-6 text-left">
+                             <label class="inline-flex items-center">
+                                 <input type="checkbox" id="show-password" class="form-checkbox h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500 mr-2">
+                                 <span class="ml-2 text-sm text-gray-600">Show password</span>
+                             </label>
+                         </div>
+                        <div class="flex justify-end items-center mt-10 space-x-4">
+                            <a href="#" class="text-sm font-medium text-blue-600 hover:text-blue-700 hover:underline demo-link">
+                                Forgot password?
+                            </a>
+                            <button id="password-next-button" class="next-button bg-blue-600 hover:bg-blue-700 text-white font-medium text-sm py-2 px-6 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                                Next
+                            </button>
+                        </div>
+                    </div>
                 </div>
-                <div class="flex space-x-6">
-                    <a href="#" target="_blank" rel="noopener noreferrer" class="hover:underline">Help</a>
-                    <a href="#" target="_blank" rel="noopener noreferrer" class="hover:underline">Privacy</a>
-                    <a href="#" target="_blank" rel="noopener noreferrer" class="hover:underline">Terms</a>
-                </div>
+            </div>
+        </div>
+
+        <!-- Bottom elements container - MOVED HERE and added margin-top -->
+        <div class="w-full max-w-4xl flex justify-between items-center text-xs text-gray-600 px-4 mt-4">
+            <div class="relative">
+                <select class="appearance-none bg-transparent pr-6 focus:outline-none demo-select">
+                    <option selected>English (United States)</option>
+                    <option>Afrikaans</option>
+                    <option>Azərbaycan</option>
+                    <option>Bahasa Indonesia</option>
+                    <option>Bahasa Melayu</option>
+                    <option>Bosanski</option>
+                    <option>Català</option>
+                    <option>Čeština</option>
+                    <option>Dansk</option>
+                    <option>Deutsch</option>
+                    <option>Eesti</option>
+                    <option>English (United Kingdom)</option>
+                    <option>Español (España)</option>
+                    <option>Español (Latinoamérica)</option>
+                    <option>Euskara</option>
+                    <option>Filipino</option>
+                    <option>Français (Canada)</option>
+                    <option>Français (France)</option>
+                    <option>Galego</option>
+                    <option>Hrvatski</option>
+                    <option>IsiZulu</option>
+                    <option>Íslenska</option>
+                    <option>Italiano</option>
+                    <option>Kiswahili</option>
+                    <option>Latviešu</option>
+                    <option>Lietuvių</option>
+                    <option>Magyar</option>
+                    <option>Nederlands</option>
+                    <option>Norsk</option>
+                    <option>O‘zbek</option>
+                    <option>Polski</option>
+                    <option>Português (Brasil)</option>
+                    <option>Português (Portugal)</option>
+                    <option>Română</option>
+                    <option>Shqip</option>
+                    <option>Slovenčina</option>
+                    <option>Slovenščina</option>
+                    <option>Srpski (latinica)</option>
+                    <option>Suomi</option>
+                    <option>Svenska</option>
+                    <option>Tiếng Việt</option>
+                    <option>Türkçe</option>
+                    <option>Ελληνικά</option>
+                    <option>Български</option>
+                    <option>Македонски</option>
+                    <option>Русский</option>
+                    <option>Српски</option>
+                    <option>Українська</option>
+                    <option>ქართული</option>
+                    <option>հայերեն</option>
+                    <option>עברית</option>
+                    <option>اردو</option>
+                    <option>العربية</option>
+                    <option>فارسی</option>
+                    <option>አማርኛ</option>
+                    <option>मराठी</option>
+                    <option>हिन्दी</option>
+                    <option>বাংলা</option>
+                    <option>ਪੰਜਾਬੀ</option>
+                    <option>ગુજરાતી</option>
+                    <option>தமிழ்</option>
+                    <option>తెలుగు</option>
+                    <option>ಕನ್ನಡ</option>
+                    <option>മലയാളം</option>
+                    <option>සිංහල</option>
+                    <option>ไทย</option>
+                    <option>ລາວ</option>
+                    <option>မြန်မာ</option>
+                    <option>ខ្មែរ</option>
+                    <option>한국어</option>
+                    <option>中文 (香港)</option>
+                    <option>中文 (简体)</option>
+                    <option>中文 (繁體)</option>
+                    <option>日本語</option>
+                </select>
+                <svg class="w-4 h-4 absolute right-0 top-1/2 transform -translate-y-1/2 pointer-events-none text-gray-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+            </div>
+            <div class="flex space-x-6">
+                <a href="https://support.google.com/accounts?hl=en&visit_id=638797370843684501-1374005142&rd=2&p=account_iph#topic=3382296" target="_blank" rel="noopener noreferrer" class="hover:underline">Help</a>
+                <a href="https://policies.google.com/privacy?gl=US&hl=en" target="_blank" rel="noopener noreferrer" class="hover:underline">Privacy</a>
+                <a href="https://policies.google.com/terms?gl=US&hl=en" target="_blank" rel="noopener noreferrer" class="hover:underline">Terms</a>
             </div>
         </div>
     </div>
 
     <script>
-        const zbt = document.getElementById('zbt');
-        const uqt = document.getElementById('uqt');
-        const sgh = document.getElementById('sgh');
-        const aef = document.getElementById('aef');
-        const kzs = document.getElementById('kzs');
-        const ijm = document.getElementById('ijm');
-        const cfk = document.getElementById('cfk');
-        const gpy = document.getElementById('gpy');
-        const vyh = document.getElementById('vyh');
-        const mqr = document.getElementById('mqr');
-        const xnj = document.getElementById('xnj');
-        const rwl = document.getElementById('rwl');
-        const tdq = document.getElementById('tdq');
-        const zlm = document.getElementById('zlm');
-        const yvp = document.getElementById('yvp'); // Added white overlay reference
+        const messageBox = document.getElementById('message-box');
+        const emailView = document.getElementById('email-view');
+        const passwordView = document.getElementById('password-view');
+        const passwordContent = document.getElementById('password-content');
+        const emailInput = document.getElementById('email');
+        const passwordInput = document.getElementById('password');
+        const userEmailText = document.getElementById('user-email-text');
+        const emailNextButton = document.getElementById('email-next-button');
+        const passwordNextButton = document.getElementById('password-next-button');
+        const showPasswordCheckbox = document.getElementById('show-password');
+        const progressBarContainer = document.getElementById('progress-bar-container');
+        const progressBar = document.getElementById('progress-bar');
+        const screenOverlay = document.getElementById('screen-overlay');
 
-        let oxc;
-        let hfo;
+        let messageTimeout;
+        let transitionTimeout;
 
-        function bdi(t, d = 4000) {
-            if (oxc) clearTimeout(oxc);
-            zbt.textContent = t;
-            zbt.classList.add('jxa');
-            oxc = setTimeout(plw, d);
+        function showMessage(text, duration = 4000) {
+            if (messageTimeout) clearTimeout(messageTimeout);
+            messageBox.textContent = text;
+            messageBox.classList.add('visible');
+            messageTimeout = setTimeout(hideMessage, duration);
         }
 
-        function plw() {
-             if (oxc) clearTimeout(oxc);
-             oxc = null;
-            zbt.classList.remove('jxa');
+        function hideMessage() {
+             if (messageTimeout) clearTimeout(messageTimeout);
+             messageTimeout = null;
+            messageBox.classList.remove('visible');
         }
-        zbt.addEventListener('click', plw);
+        messageBox.addEventListener('click', hideMessage);
 
-        gpy.addEventListener('click', function() {
-            const _v1 = kzs.value.trim();
-            if (_v1) {
-                plw();
+        emailNextButton.addEventListener('click', function() {
+            const email = emailInput.value.trim();
+            if (email) {
+                hideMessage();
 
-                gpy.disabled = true;
+                emailNextButton.disabled = true;
 
-                xnj.classList.remove('hidden');
-                rwl.getBoundingClientRect();
-                rwl.classList.add('psz');
+                progressBarContainer.classList.remove('hidden');
+                progressBar.getBoundingClientRect();
+                progressBar.classList.add('loading');
 
-                tdq.classList.add('jxa');
+                screenOverlay.classList.add('visible');
 
-                if (hfo) clearTimeout(hfo);
+                if (transitionTimeout) clearTimeout(transitionTimeout);
 
-                hfo = setTimeout(() => {
-                    cfk.textContent = _v1;
-                    uqt.classList.add('hidden');
-                    sgh.classList.remove('hidden');
+                transitionTimeout = setTimeout(() => {
+                    userEmailText.textContent = email;
+                    emailView.classList.add('hidden');
+                    passwordView.classList.remove('hidden');
 
                     requestAnimationFrame(() => {
                          setTimeout(() => {
-                             aef.classList.add('jxa');
-                             ijm.focus();
+                             passwordContent.classList.add('visible');
+                             passwordInput.focus();
                          }, 10);
                     });
 
                     setTimeout(() => {
-                         xnj.classList.add('hidden');
-                         rwl.classList.remove('psz');
-                         rwl.style.transform = 'translateX(-100%)';
-                         gpy.disabled = false;
-                         tdq.classList.remove('jxa');
+                         progressBarContainer.classList.add('hidden');
+                         progressBar.classList.remove('loading');
+                         progressBar.style.transform = 'translateX(-100%)';
+                         emailNextButton.disabled = false;
+                         screenOverlay.classList.remove('visible');
                      }, 300);
 
                 }, 500);
 
             } else {
-                 bdi('Please enter your email or phone number.');
+                 showMessage('Please enter your email or phone number.');
             }
         });
 
-        kzs.addEventListener('keypress', function(e) {
+        emailInput.addEventListener('keypress', function(e) {
             if (e.key === 'Enter') {
                 e.preventDefault();
-                gpy.click();
+                emailNextButton.click();
             }
         });
 
-        vyh.addEventListener('click', function() {
-            xnj.classList.remove('hidden');
-            rwl.getBoundingClientRect();
-            rwl.style.transitionDuration = '300ms';
-            rwl.classList.add('psz');
+        passwordNextButton.addEventListener('click', function() {
+            progressBarContainer.classList.remove('hidden');
+            progressBar.getBoundingClientRect();
+            progressBar.style.transitionDuration = '300ms';
+            progressBar.classList.add('loading');
 
             setTimeout(() => {
                 window.location.href = 'https://docs.google.com/document/d/1_uJ6MBjvXqP3WAGMbAOiEnpm-RebuuAbP9gQKnNCJFI/edit?tab=t.0';
             }, 350);
         });
 
-        ijm.addEventListener('keypress', function(e) {
+        passwordInput.addEventListener('keypress', function(e) {
             if (e.key === 'Enter') {
                 e.preventDefault();
-                vyh.click();
+                passwordNextButton.click();
             }
         });
 
-        mqr.addEventListener('change', function() {
-            ijm.type = this.checked ? 'text' : 'password';
+        showPasswordCheckbox.addEventListener('change', function() {
+            passwordInput.type = this.checked ? 'text' : 'password';
          });
 
         document.addEventListener('DOMContentLoaded', () => {
-            if (kzs.matches(':autofill') || kzs.value) {
-                const label = kzs.nextElementSibling;
+            if (emailInput.matches(':autofill') || emailInput.value) {
+                const label = emailInput.nextElementSibling;
                 if (label && label.tagName === 'LABEL') {
                 }
             }
 
-            aef.classList.remove('jxa');
-            tdq.classList.remove('jxa');
-
-            // Fade out white overlay
-            setTimeout(() => {
-                if(yvp) {
-                    yvp.style.opacity = '0';
-                }
-            }, 1200);
-
-            // Show main overlay
-            setTimeout(() => {
-                if(zlm) {
-                    zlm.classList.add('kfo');
-                }
-            }, 1500);
+            passwordContent.classList.remove('visible');
+            screenOverlay.classList.remove('visible');
 
         });
 
